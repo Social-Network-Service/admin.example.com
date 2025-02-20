@@ -1,0 +1,69 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "id": "xeqd35Vo",
+      "code": "order_save",
+      "name": "暂存工单处理结果",
+      "state": 1,
+      "create_time": "2024-07-23 12:20:06",
+      "update_time": "2024-07-23 12:20:06",
+      "role": "admin_menuaction_1"
+    },
+    {
+      "id": "XkyaV5P8",
+      "code": "order_submit",
+      "name": "提交工单处理结果",
+      "state": 0,
+      "create_time": "2024-07-23 12:20:22",
+      "update_time": "2024-07-23 12:20:22",
+      "role": "admin_menuaction_2"
+    },
+    {
+      "id": "e1qpP4qV",
+      "code": "order_upgrade",
+      "name": "升级处理",
+      "state": 0,
+      "create_time": "2024-09-12 17:50:01",
+      "update_time": "2024-09-12 17:50:01",
+      "role": "admin_menuaction_35"
+    },
+    {
+      "id": "rNGljx5m",
+      "code": "game_screenshot",
+      "name": "游戏截图",
+      "state": 1,
+      "create_time": "2025-02-05 17:10:10",
+      "update_time": "2025-02-05 17:10:10",
+      "role": "admin_menuaction_76"
+    },
+    {
+      "id": "vYGOo3Ge",
+      "code": "system_logs",
+      "name": "系统日志",
+      "state": 1,
+      "create_time": "2025-02-05 17:10:23",
+      "update_time": "2025-02-05 17:10:23",
+      "role": "admin_menuaction_77"
+    },
+    {
+      "id": "dpGVzeGg",
+      "code": "video_playback",
+      "name": "视频回放",
+      "state": 1,
+      "create_time": "2025-02-05 17:10:33",
+      "update_time": "2025-02-05 17:10:33",
+      "role": "admin_menuaction_78"
+    },
+    {
+      "id": "1EyjPNqv",
+      "code": "reported_user_settlement",
+      "name": "被举报人结算数据",
+      "state": 1,
+      "create_time": "2025-02-05 17:10:47",
+      "update_time": "2025-02-05 17:10:47",
+      "role": "admin_menuaction_79"
+    }
+  ]
+}

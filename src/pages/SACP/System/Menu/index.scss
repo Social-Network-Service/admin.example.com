@@ -1,0 +1,47 @@
+.menu-page {
+  .ant-tree {
+    .ant-tree-treenode {
+      width: 100%;
+
+      &.ant-tree-treenode-selected {
+        .ant-space {
+          display: flex !important;
+        }
+      }
+
+      .ant-tree-switcher {
+        margin-right: 0;
+      }
+
+      .ant-tree-node-content-wrapper {
+        display: flex;
+        flex: 1;
+        padding-inline: 0;
+
+        .ant-tree-title {
+          flex: 1;
+
+          &:hover {
+            .ant-space {
+              display: flex;
+            }
+          }
+
+          .ant-space {
+            display: none;
+
+            .ant-tag {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .operate {
+    .ant-tag {
+      cursor: pointer;
+    }
+  }
+}

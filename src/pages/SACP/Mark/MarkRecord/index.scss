@@ -1,0 +1,20 @@
+.mark-record {
+  .mark-record-item {
+    width: 200px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 1.8;
+    color: #aaa;
+
+    .mark-img {
+      cursor: pointer;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    div[class^='copy-text'] {
+      width: 100%;
+    }
+  }
+}

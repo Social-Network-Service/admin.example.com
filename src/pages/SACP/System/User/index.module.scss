@@ -1,0 +1,15 @@
+.user-page {
+  :global {
+    .account-link {
+      color: var(--primary) !important;
+    }
+
+    .link-tag {
+      cursor: pointer;
+
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+}

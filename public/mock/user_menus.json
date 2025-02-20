@@ -1,0 +1,186 @@
+{
+  "code": 0,
+  "data": [
+    {
+      "id": 100,
+      "key": "AGI",
+      "name": "AGI",
+      "path": "/AGI",
+      "icon": "heart"
+    },
+    {
+      "id": 200,
+      "key": "SACP",
+      "name": "SACP",
+      "path": "/SACP",
+      "icon": "FireOutlined",
+      "routes": [
+        {
+          "name": "违规业务",
+          "path": "/SACP/violation",
+          "routes": [
+            {
+              "name": "违规处理",
+              "path": "/SACP/violation/deal"
+            },
+            {
+              "name": "违规申诉",
+              "path": "/SACP/violation/appeal"
+            },
+            {
+              "name": "工单搜索",
+              "path": "/SACP/violation/search"
+            }
+          ]
+        },
+        {
+          "name": "标注管理",
+          "path": "/SACP/Mark",
+          "routes": [
+            {
+              "name": "视频列表",
+              "path": "/SACP/Mark/MarkVideo"
+            },
+            {
+              "name": "图片列表",
+              "path": "/SACP/Mark/MarkImage"
+            },
+            {
+              "name": "推理信息",
+              "path": "/SACP/Mark/MarkInference"
+            },
+            {
+              "name": "标注质检",
+              "path": "/SACP/Mark/QualityInspection"
+            },
+            {
+              "name": "标注记录",
+              "path": "/SACP/Mark/MarkRecord",
+              "hideInMenu": true
+            }
+          ]
+        },
+        {
+          "name": "系统配置",
+          "path": "System",
+          "routes": [
+            {
+              "name": "用户管理",
+              "path": "/SACP/System/User"
+            },
+            {
+              "name": "角色管理",
+              "path": "/SACP/System/Rule"
+            },
+            {
+              "name": "菜单管理",
+              "path": "/SACP/System/Menu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 300,
+      "key": "AntDesign",
+      "name": "AntDesign",
+      "path": "/AntDesign",
+      "icon": "SmileOutlined",
+      "routes": [
+        {
+          "name": "数据录入",
+          "path": "/AntDesign/Form",
+          "routes": [
+            {
+              "name": "表单(Form)",
+              "path": "/AntDesign/Form/Form"
+            },
+            {
+              "name": "输入框(Input)",
+              "path": "/AntDesign/Form/Input"
+            },
+            {
+              "name": "选择器(Select)",
+              "path": "/AntDesign/Form/Select"
+            },
+            {
+              "name": "多选框(Checkbox)",
+              "path": "/AntDesign/Form/Checkbox"
+            },
+            {
+              "name": "上传(Upload)",
+              "path": "/AntDesign/Form/Upload"
+            }
+          ]
+        },
+        {
+          "name": "对话框(Modal)",
+          "path": "/AntDesign/Modal"
+        },
+        {
+          "name": "加载中(Loading)",
+          "path": "/AntDesign/Loading"
+        },
+        {
+          "name": "按钮(Button)",
+          "path": "/AntDesign/Button"
+        },
+        {
+          "name": "图标(Icons)",
+          "path": "/AntDesign/Icons"
+        },
+        {
+          "name": "表格(Table)",
+          "path": "/AntDesign/Table"
+        },
+        {
+          "name": "标签页(Tabs)",
+          "path": "/AntDesign/Tabs"
+        },
+        {
+          "name": "页面容器(PageContainer)",
+          "path": "/AntDesign/PageContainer"
+        },
+        {
+          "name": "富文本编辑器(RichTextEditor)",
+          "path": "/AntDesign/RichTextEditor"
+        }
+      ]
+    },
+    {
+      "id": 400,
+      "key": "Demo",
+      "name": "Demo",
+      "path": "/Demo",
+      "icon": "StarOutlined",
+      "routes": [
+        {
+          "name": "音频可视化",
+          "path": "/Demo/AudioVisualization"
+        },
+        {
+          "name": "表单创建",
+          "path": "/Demo/FormCreate"
+        }
+      ]
+    },
+    {
+      "id": 500,
+      "key": "Test",
+      "name": "Test",
+      "path": "/Test",
+      "icon": "TransactionOutlined",
+      "routes": [
+        {
+          "name": "刷新页面",
+          "path": "/Test/RefreshPage"
+        },
+        {
+          "name": "动态更新参数",
+          "path": "/Test/UpdateSearchParams"
+        }
+      ]
+    }
+  ],
+  "message": "成功"
+}
