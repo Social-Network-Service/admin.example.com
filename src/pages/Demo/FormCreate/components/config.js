@@ -80,7 +80,7 @@ export const inputComponents = [
       showLabel: true,
       labelWidth: null,
       changeTag: true,
-      tag: 'el-input',
+      tag: 'input_password',
       tagIcon: 'password',
       defaultValue: undefined,
       layout: 'colFormItem',

@@ -1,9 +1,13 @@
-import {useState, useMemo, useEffect} from 'react';
+import {useState, useMemo, useEffect, useContext} from 'react';
 import {Form, Input} from "antd";
 import {ProForm, ProFormText, ProFormTextArea} from "@ant-design/pro-components"
+import {FormContext} from "../contexts/FormContext";
 
 export default () => {
-  const [formItemList, setFormItemList] = useState([])
+  const [formItemList, setFormItemList] = useState([{
+    tag: 'input',
+  }])
+  const formContext = useContext(FormContext)
 
   useEffect(() => {
     const listener = (event) => {
@@ -29,6 +33,9 @@ export default () => {
       case 'textarea':
         return <ProFormTextArea label={`字段${index + 1}`} key={index}/>
         break;
+      case 'input_password':
+        return <ProFormText.Password label={`字段${index + 1}`} key={index}/>
+        break;
       default:
         return <span key={index}>未知tag={formItem.tag}</span>
         break;
@@ -37,7 +44,13 @@ export default () => {
 
   return (
     <div className='form-bar'>
-      <ProForm>
+      <ProForm
+        layout={formContext.state.layout}
+        labelAlign={formContext.state.labelAlign}
+        submitter={false}
+        autoFocusFirstInput={false}
+        labelCol={{ style: { width: '120px' } }}
+      >
         {formItems}
       </ProForm>
     </div>

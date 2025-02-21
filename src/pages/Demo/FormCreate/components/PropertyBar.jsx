@@ -1,12 +1,15 @@
-import {useState} from "react";
+import {useState, useContext} from "react";
 import {Tabs, Form, Button, Input, Radio} from 'antd';
+import {FormContext} from "../contexts/FormContext";
 
 export default () => {
   const [form] = Form.useForm();
-  const [formLayout, setFormLayout] = useState('horizontal');
-  const onFormLayoutChange = ({layout}) => {
-    setFormLayout(layout);
-  };
+  const formContext = useContext(FormContext)
+
+  const initialValues = {
+    layout: formContext.state.layout,
+    labelAlign: formContext.state.labelAlign,
+  }
 
   const items = [
     {
@@ -14,28 +17,30 @@ export default () => {
       label: '表单属性',
       children: (
         <Form
-          layout={formLayout}
+          layout='horizontal'
           form={form}
-          initialValues={{
-            layout: formLayout,
-          }}
-          onValuesChange={onFormLayoutChange}
-          style={{
-            maxWidth: formLayout === 'inline' ? 'none' : 600,
-          }}
+          initialValues={initialValues}
         >
-          <Form.Item label="Form Layout" name="layout">
-            <Radio.Group value={formLayout}>
+          <Form.Item label="表单布局" name="layout">
+            <Radio.Group onChange={(event) => {
+              formContext.setState({
+                layout: event.target.value
+              })
+            }}>
               <Radio.Button value="horizontal">Horizontal</Radio.Button>
               <Radio.Button value="vertical">Vertical</Radio.Button>
               <Radio.Button value="inline">Inline</Radio.Button>
             </Radio.Group>
           </Form.Item>
-          <Form.Item label="Field A">
-            <Input placeholder="input placeholder"/>
-          </Form.Item>
-          <Form.Item label="Field B">
-            <Input placeholder="input placeholder"/>
+          <Form.Item label="标签文本对齐方式" name="labelAlign">
+            <Radio.Group onChange={(event) => {
+              formContext.setState({
+                labelAlign: event.target.value
+              })
+            }}>
+              <Radio.Button value="left">left</Radio.Button>
+              <Radio.Button value="right">right</Radio.Button>
+            </Radio.Group>
           </Form.Item>
         </Form>
       ),
