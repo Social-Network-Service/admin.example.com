@@ -35,4 +35,8 @@ const formItemList = formItems.map((formItem, index) => {
 
 ## 代码生成器
 
+生成jsx组件文件
+
 ## 表单预览器
+
+preview.html
