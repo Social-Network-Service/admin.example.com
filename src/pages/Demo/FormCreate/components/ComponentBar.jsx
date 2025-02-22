@@ -1,10 +1,12 @@
+import {useContext} from "react";
 import {Tag} from 'antd'
 import {
   inputComponents, selectComponents, layoutComponents, formConf
 } from './config'
+import {GlobalDataContext} from "../contexts/GlobalDataContext";
 
 export default () => {
-
+  const {addFormItem} = useContext(GlobalDataContext)
   const leftComponents = [
     {
       title: '输入型组件',
@@ -32,7 +34,9 @@ export default () => {
                   key={index}
                   className="component-item"
                   onClick={() => {
-                    window.dispatchEvent(new CustomEvent('add_component', {detail: component}))
+                    addFormItem({
+                      tag: component.__config__.tag
+                    })
                   }}
                 >
                   <Tag>

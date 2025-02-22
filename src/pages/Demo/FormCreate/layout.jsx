@@ -3,7 +3,7 @@ export default ({headerRender, leftRender, centerRender, rightRender}) => {
     <section className="layout">
       {
         headerRender && (<header className="header">
-          headerRender()
+          {headerRender()}
         </header>)
       }
       <main className="main">

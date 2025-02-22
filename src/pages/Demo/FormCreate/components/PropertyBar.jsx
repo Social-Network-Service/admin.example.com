@@ -1,14 +1,14 @@
 import {useState, useContext} from "react";
 import {Tabs, Form, Button, Input, Radio} from 'antd';
-import {FormContext} from "../contexts/FormContext";
+import {GlobalDataContext} from "../contexts/GlobalDataContext";
 
 export default () => {
   const [form] = Form.useForm();
-  const formContext = useContext(FormContext)
+  const {state, setFormConfig} = useContext(GlobalDataContext)
 
   const initialValues = {
-    layout: formContext.state.layout,
-    labelAlign: formContext.state.labelAlign,
+    layout: state.formConfig.layout,
+    labelAlign: state.formConfig.labelAlign,
   }
 
   const items = [
@@ -20,10 +20,11 @@ export default () => {
           layout='horizontal'
           form={form}
           initialValues={initialValues}
+          size={'small'}
         >
           <Form.Item label="表单布局" name="layout">
             <Radio.Group onChange={(event) => {
-              formContext.setState({
+              setFormConfig({
                 layout: event.target.value
               })
             }}>
@@ -34,7 +35,7 @@ export default () => {
           </Form.Item>
           <Form.Item label="标签文本对齐方式" name="labelAlign">
             <Radio.Group onChange={(event) => {
-              formContext.setState({
+              setFormConfig({
                 labelAlign: event.target.value
               })
             }}>

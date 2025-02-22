@@ -9,6 +9,12 @@
     flex: 0 0 auto;
     border-bottom: 1px solid gray;
     padding: 8px;
+
+    .ant-btn {
+      + .ant-btn {
+        margin-left: 8px;
+      }
+    }
   }
 
   main {
@@ -32,8 +38,8 @@
     }
 
     .right {
-      flex: 0 0 350px;
-      padding: 8px;
+      flex: 0 0 280px;
+      padding: 0 8px;
     }
   }
 }
@@ -46,6 +52,30 @@
       cursor: pointer;
       display: inline-block;
       width: 50%;
+    }
+  }
+}
+
+.form-bar {
+  .form-item-wrapper {
+    position: relative;
+    border: 1px solid red;
+    border-radius: 8px;
+    margin-bottom: 4px;
+
+    &:hover {
+      .anticon-delete {
+        display: inline-block;
+      }
+    }
+
+    .anticon-delete {
+      display: none;
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      z-index: 9;
+      cursor: pointer;
     }
   }
 }
