@@ -67,7 +67,15 @@ export default () => {
               }}>
         查看JSON
       </Button>
-      <Button size='small' type='primary'>
+
+      <Button size='small' type='primary' onClick={() => {
+        let fileName = prompt("请输入导出的文件名！", '未命名');
+        if (fileName) {
+          const jsCodeStr = JSON.stringify(formItemConfig, null, 2);
+          const blob = new Blob([jsCodeStr], {type: 'text/plain;charset=utf-8'})
+          saveAs(blob, `${fileName}.json`)
+        }
+      }}>
         导出JSON
       </Button>
       <Button size='small' type='primary'

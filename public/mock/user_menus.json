@@ -172,10 +172,12 @@
       "icon": "TransactionOutlined",
       "routes": [
         {
+          "id": 501,
           "name": "刷新页面",
           "path": "/Test/RefreshPage"
         },
         {
+          "id": 502,
           "name": "动态更新参数",
           "path": "/Test/UpdateSearchParams"
         }

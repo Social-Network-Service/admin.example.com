@@ -38,7 +38,7 @@ export const inputComponents = [
     },
     // 其余的为可直接写在组件标签上的属性
     placeholder: '请输入',
-    style: { width: '100%' },
+    style: {width: '100%'},
     clearable: true,
     'prefix-icon': '',
     'suffix-icon': '',
@@ -68,7 +68,7 @@ export const inputComponents = [
       minRows: 4,
       maxRows: 4
     },
-    style: { width: '100%' },
+    style: {width: '100%'},
     maxlength: null,
     'show-word-limit': false,
     readonly: false,
@@ -95,7 +95,7 @@ export const inputComponents = [
     },
     placeholder: '请输入',
     'show-password': true,
-    style: { width: '100%' },
+    style: {width: '100%'},
     clearable: true,
     'prefix-icon': '',
     'suffix-icon': '',
@@ -104,49 +104,6 @@ export const inputComponents = [
     readonly: false,
     disabled: false
   },
-  {
-    __config__: {
-      label: '计数器',
-      showLabel: true,
-      changeTag: true,
-      labelWidth: null,
-      tag: 'el-input-number',
-      tagIcon: 'number',
-      defaultValue: undefined,
-      span: 24,
-      layout: 'colFormItem',
-      required: true,
-      regList: [],
-      document: 'https://element.eleme.cn/#/zh-CN/component/input-number'
-    },
-    placeholder: '',
-    min: undefined,
-    max: undefined,
-    step: 1,
-    'step-strictly': false,
-    precision: undefined,
-    'controls-position': '',
-    disabled: false
-  },
-  {
-    __config__: {
-      label: '编辑器',
-      showLabel: true,
-      changeTag: true,
-      labelWidth: null,
-      tag: 'tinymce',
-      tagIcon: 'rich-text',
-      defaultValue: null,
-      span: 24,
-      layout: 'colFormItem',
-      required: true,
-      regList: [],
-      document: 'http://tinymce.ax-z.cn'
-    },
-    placeholder: '请输入',
-    height: 300, // 编辑器高度
-    branding: false // 隐藏右下角品牌烙印
-  }
 ]
 
 // 选择型组件 【左面板】
@@ -175,7 +132,7 @@ export const selectComponents = [
       }]
     },
     placeholder: '请选择',
-    style: { width: '100%' },
+    style: {width: '100%'},
     clearable: true,
     disabled: false,
     filterable: false,
@@ -212,7 +169,7 @@ export const selectComponents = [
       }]
     }],
     placeholder: '请选择',
-    style: { width: '100%' },
+    style: {width: '100%'},
     props: {
       props: {
         multiple: false,
@@ -351,7 +308,7 @@ export const selectComponents = [
       document: 'https://element.eleme.cn/#/zh-CN/component/time-picker'
     },
     placeholder: '请选择',
-    style: { width: '100%' },
+    style: {width: '100%'},
     disabled: false,
     clearable: true,
     'picker-options': {
@@ -375,7 +332,7 @@ export const selectComponents = [
       changeTag: true,
       document: 'https://element.eleme.cn/#/zh-CN/component/time-picker'
     },
-    style: { width: '100%' },
+    style: {width: '100%'},
     disabled: false,
     clearable: true,
     'is-range': true,
@@ -402,7 +359,7 @@ export const selectComponents = [
     },
     placeholder: '请选择',
     type: 'date',
-    style: { width: '100%' },
+    style: {width: '100%'},
     disabled: false,
     clearable: true,
     format: 'yyyy-MM-dd',
@@ -424,7 +381,7 @@ export const selectComponents = [
       changeTag: true,
       document: 'https://element.eleme.cn/#/zh-CN/component/date-picker'
     },
-    style: { width: '100%' },
+    style: {width: '100%'},
     type: 'daterange',
     'range-separator': '至',
     'start-placeholder': '开始日期',

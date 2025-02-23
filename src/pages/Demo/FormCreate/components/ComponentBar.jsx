@@ -34,9 +34,7 @@ export default () => {
                   key={index}
                   className="component-item"
                   onClick={() => {
-                    addFormItem({
-                      tag: component.__config__.tag
-                    })
+                    addFormItem(component)
                   }}
                 >
                   <Tag>
