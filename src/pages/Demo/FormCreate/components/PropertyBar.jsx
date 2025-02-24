@@ -1,4 +1,4 @@
-import {useState, useContext, useMemo} from "react";
+import {useState, useContext, useMemo, useEffect} from "react";
 import {Tabs, Form, Button, Input, Radio} from 'antd';
 import {GlobalDataContext} from "../contexts/GlobalDataContext";
 
@@ -16,21 +16,20 @@ export default () => {
 
   const selectedFormItem = useMemo(() => {
     return selectIndex !== null ? formItemConfig[selectIndex] : null;
-  }, [selectIndex])
+  }, [selectIndex, formItemConfig])
 
-  const initialValues = {
-    layout: formConfig.layout,
-    labelAlign: formConfig.labelAlign,
-  }
-
-  const initialValues2 = {
-    label: selectedFormItem?.label,
-    name: selectedFormItem?.name,
-  }
+  useEffect(() => {
+    if (selectedFormItem) {
+      form.setFieldsValue({
+        label: selectedFormItem.label,
+        name: selectedFormItem.name,
+      });
+    }
+  }, [selectedFormItem, form]);
 
   const componentPropertyPanel = selectedFormItem
     ? (<Form
-      initialValues={initialValues2}
+      form={form}
       layout='horizontal'
       size={'small'}
     >
@@ -70,7 +69,10 @@ export default () => {
         <Form
           layout='horizontal'
           form={form}
-          initialValues={initialValues}
+          initialValues={{
+            layout: formConfig.layout,
+            labelAlign: formConfig.labelAlign,
+          }}
           size={'small'}
         >
           <Form.Item label="表单布局" name="layout">
