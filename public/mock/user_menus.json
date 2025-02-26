@@ -182,6 +182,35 @@
           "path": "/Test/UpdateSearchParams"
         }
       ]
+    },
+    {
+      "id": 600,
+      "key": "multimedia",
+      "name": "多媒体",
+      "path": "/multimedia",
+      "icon": "MediumOutlined",
+      "routes": [
+        {
+          "id": 601,
+          "name": "文本",
+          "path": "/multimedia/text"
+        },
+        {
+          "id": 602,
+          "name": "图片",
+          "path": "/multimedia/image"
+        },
+        {
+          "id": 603,
+          "name": "音频",
+          "path": "/multimedia/audio"
+        },
+        {
+          "id": 604,
+          "name": "视频",
+          "path": "/multimedia/video"
+        }
+      ]
     }
   ],
   "message": "成功"
