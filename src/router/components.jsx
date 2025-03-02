@@ -48,5 +48,6 @@ const components = {
   '/Demo/FormCreate': wrapComponent(lazy(() => import('@/pages/Demo/FormCreate/index'))),
   '/Test/RefreshPage': wrapComponent(lazy(() => import('@/pages/Test/RefreshPage/index'))),
   '/Test/UpdateSearchParams': wrapComponent(lazy(() => import('@/pages/Test/UpdateSearchParams/index'))),
+  '/Multimedia/Image': wrapComponent(lazy(() => import('@/pages/Multimedia/Image/index'))),
 }
 export default components

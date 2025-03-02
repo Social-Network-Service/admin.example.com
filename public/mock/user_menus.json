@@ -187,28 +187,28 @@
       "id": 600,
       "key": "multimedia",
       "name": "多媒体",
-      "path": "/multimedia",
+      "path": "/Multimedia",
       "icon": "MediumOutlined",
       "routes": [
         {
           "id": 601,
           "name": "文本",
-          "path": "/multimedia/text"
+          "path": "/Multimedia/Text"
         },
         {
           "id": 602,
           "name": "图片",
-          "path": "/multimedia/image"
+          "path": "/Multimedia/Image"
         },
         {
           "id": 603,
           "name": "音频",
-          "path": "/multimedia/audio"
+          "path": "/Multimedia/Audio"
         },
         {
           "id": 604,
           "name": "视频",
-          "path": "/multimedia/video"
+          "path": "/Multimedia/Video"
         }
       ]
     }
