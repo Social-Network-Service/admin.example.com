@@ -3,34 +3,35 @@ import {Carousel} from 'antd'
 import './style.css'
 
 const imgs = [
-  '/images/slide1.jpeg',
-  '/images/slide2.jpeg',
-  '/images/slide3.jpeg',
-  '/images/slide4.jpeg',
+    '/images/slide1.jpeg',
+    '/images/slide2.jpeg',
+    '/images/slide3.jpeg',
+    '/images/slide4.jpeg',
 ]
 
-
 class Home extends React.Component {
-  render() {
-    return (
-      <div style={styles.bg} className='home'>
-        <Carousel arrows effect='fade' className='size'>
-          {imgs.map(item=><div key={item}><div className='size' style={{backgroundImage:`url(${item})`}}/></div>)}
-          {/*不用img标签是因为图片大小会出现问题*/}
-        </Carousel>
-      </div>
-    )
-  }
+    render() {
+        return (
+            <div style={styles.bg} className='home'>
+                <Carousel arrows effect='fade' autoplay>
+                    {imgs.map(item => {
+                        return (
+                            <div key={item}>
+                                <img src={item} width='100%' height="100%" alt=""/>
+                            </div>
+                        )
+                    })}
+                </Carousel>
+            </div>
+        )
+    }
 }
 
 const styles = {
-  bg:{
-    position:'absolute',
-    top:0,
-    left:0,
-    width:'100%',
-    height:'100%'
-  }
+    bg: {
+        width: '100%',
+        height: '200px'
+    }
 }
 
 export default Home
