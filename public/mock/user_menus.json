@@ -217,7 +217,7 @@
       "key": "component",
       "name": "自定义组件",
       "path": "/Component",
-      "icon": "MediumOutlined",
+      "icon": "LikeOutlined",
       "routes": [
         {
           "id": 701,
