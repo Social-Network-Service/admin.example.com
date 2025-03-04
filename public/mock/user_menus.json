@@ -211,6 +211,25 @@
           "path": "/Multimedia/Video"
         }
       ]
+    },
+    {
+      "id": 700,
+      "key": "component",
+      "name": "自定义组件",
+      "path": "/Component",
+      "icon": "MediumOutlined",
+      "routes": [
+        {
+          "id": 701,
+          "name": "图片上传(UploadImage)",
+          "path": "/Component/UploadImage"
+        },
+        {
+          "id": 702,
+          "name": "图标(SvgIcon)",
+          "path": "/Component/SvgIcon"
+        }
+      ]
     }
   ],
   "message": "成功"
