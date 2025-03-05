@@ -1,6 +1,6 @@
 import React from 'react'
 import {Carousel} from 'antd'
-import './style.css'
+import './index.scss'
 
 const imgs = [
     '/images/slide1.jpeg',
@@ -13,7 +13,7 @@ class Home extends React.Component {
     render() {
         return (
             <div style={styles.bg} className='home'>
-                <Carousel arrows effect='fade' autoplay>
+                <Carousel arrows effect='fade' autoplay adaptiveHeight>
                     {imgs.map(item => {
                         return (
                             <div key={item}>
