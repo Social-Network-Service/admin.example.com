@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import {Outlet, useNavigate} from 'react-router-dom';
-import {Dropdown,} from 'antd';
-import {UserOutlined, LogoutOutlined,} from '@ant-design/icons';
-import {ProLayout,} from '@ant-design/pro-components';
+import {Outlet, useNavigate, useLocation} from 'react-router-dom';
+import {Dropdown, message} from 'antd';
+import {UserOutlined, LogoutOutlined} from '@ant-design/icons';
+import {ProLayout} from '@ant-design/pro-components';
 
-import Breadcrumb from '../Breadcrumb'
+import Breadcrumb from '../Breadcrumb';
+import TagsView from '@/components/TagsView';
 import {loopMenuItem} from "@/utils/menu";
+import './index.scss';
 
 let count = 1;
 const defaultOpenKeys = ['/SACP', '/Demo']
@@ -14,6 +16,7 @@ export default (props) => {
     const {userInfo, userMenus} = props
     const [pathname, setPathname] = useState('/');
     const navigate = useNavigate();
+    const location = useLocation();
 
     const menu_fold = JSON.parse(localStorage.getItem("menu_fold")) || false;
     const [collapsed, setCollapsed] = useState(menu_fold);
@@ -21,7 +24,6 @@ export default (props) => {
 
     useEffect(() => {
         var onChangeMenuFoldState = (event) => {
-            // console.log(event.detail)
             setCollapsed(event.detail)
         }
         window.addEventListener('change_menu_fold', onChangeMenuFoldState)
@@ -45,13 +47,16 @@ export default (props) => {
     ]
 
     const onClick = ({key}) => {
+        if (key === 'Logout') {
+            message.success('退出登录成功');
+            // 这里添加您的登出逻辑
+            return;
+        }
         navigate(`${key}`);
     };
 
     if (!userInfo || !userMenus) {
-        return (
-            <Outlet/>
-        );
+        return <Outlet/>;
     }
 
     const routes = loopMenuItem(userMenus);
@@ -62,38 +67,42 @@ export default (props) => {
 
     return (
         <ProLayout
+            className={collapsed ? 'ant-pro-layout-collapsed' : ''}
             collapsed={collapsed}
             route={menus}
-            // prefixCls={'seasun'}  // 定义组件的类名前缀
-            fixSiderbar={true}    // 是否固定导航
-            layout={'mix'}  // layout 的菜单模式，side：右侧导航，top：顶部导航, mix 混合
+            fixSiderbar={true}
+            layout={'mix'}
             location={{
                 pathname,
             }}
             openKeys={openKeys}
+            siderWidth={200}
             onOpenChange={(val) => {
-                // 这里应该是 ProLayout 的 Bug
                 if (count++ === 1 && val.length === 0) {
                     val = defaultOpenKeys
                 }
-
                 setOpenKeys(val)
             }}
             token={{
                 header: {
-                    colorBgMenuItemSelected: 'rgba(255,0,0,0.5)',
+                    colorBgMenuItemSelected: '#1890ff',
+                },
+                sider: {
+                    colorMenuBackground: '#001529',
+                    colorTextMenu: 'rgba(255, 255, 255, 0.65)',
+                    colorTextMenuSelected: '#fff',
+                    colorBgMenuItemSelected: '#1890ff',
                 },
             }}
             menu={{
-                // 忽略收起时自动关闭菜单
                 ignoreFlatMenu: true,
-                // 菜单收起时，显示菜单名字
                 collapsedShowGroupTitle: true,
+                type: 'sub',
             }}
             avatarProps={{
-                src: userInfo?.avatar,
+                src: userInfo?.avatar || 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
                 size: 'small',
-                title: userInfo?.name,
+                title: userInfo?.name || '用户',
                 render: (props, dom) => {
                     return (
                         <Dropdown
@@ -108,27 +117,22 @@ export default (props) => {
                     );
                 },
             }}
-            actionsRender={(props) => {
-                return <span>actionsRender</span>;
-            }}
             headerTitleRender={(logo, title, _) => {
                 return <>
-                    <img src="/images/logo.png" alt=""/>
-                    <span>headerTitleRender</span>
+                    <img src="/images/ant.svg" alt="" style={{ height: '32px', marginRight: collapsed ? '0' : '12px' }}/>
+                    {!collapsed && <span style={{ margin: 0, fontSize: '18px', fontWeight: 'bold' }}>React Admin</span>}
                 </>;
             }}
             headerContentRender={(props) => {
                 return (<Breadcrumb {...props}></Breadcrumb>);
             }}
-            menuFooterRender={(props) => {
-                return (<span>menuFooterRender</span>);
-            }}
-            onMenuHeaderClick={(e) => console.log('onMenuHeaderClick:', e)}
             menuItemRender={(item, dom) => (
                 <div
                     onClick={() => {
                         setPathname(item.path);
-                        navigate(item.path);
+                        navigate(item.path, {
+                            state: { title: item.name }
+                        });
                     }}
                 >
                     {dom}
@@ -137,6 +141,7 @@ export default (props) => {
             collapsedButtonRender={() => null}
         >
             <div className="main-container">
+                <TagsView />
                 <Outlet/>
             </div>
         </ProLayout>
