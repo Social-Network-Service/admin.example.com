@@ -3,10 +3,9 @@ import {Outlet, useNavigate, useLocation} from 'react-router-dom';
 import {Dropdown, message} from 'antd';
 import {UserOutlined, LogoutOutlined} from '@ant-design/icons';
 import {ProLayout} from '@ant-design/pro-components';
-
-import Breadcrumb from '../Breadcrumb';
-import TagsView from '@/components/TagsView';
 import {loopMenuItem} from "@/utils/menu";
+import Breadcrumb from '../Breadcrumb';
+import TagsView from '../TagsView';
 import './index.scss';
 
 let count = 1;
@@ -140,8 +139,8 @@ export default (props) => {
             )}
             collapsedButtonRender={() => null}
         >
+            <TagsView />
             <div className="main-container">
-                <TagsView />
                 <Outlet/>
             </div>
         </ProLayout>

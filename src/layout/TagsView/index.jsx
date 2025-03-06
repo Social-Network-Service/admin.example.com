@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Tag } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Scrollbars } from 'react-custom-scrollbars';
 import './index.scss';
 
 const TagsView = () => {
@@ -43,20 +44,38 @@ const TagsView = () => {
 
     return (
         <div className="tags-view-container">
-            {visitedViews.map((tag) => (
-                <Tag
-                    key={tag.pathname}
-                    closable={tag.closable}
-                    color={location.pathname === tag.pathname ? 'blue' : 'default'}
-                    onClick={() => navigate(tag.pathname)}
-                    onClose={(e) => {
-                        e.preventDefault();
-                        closeView(tag);
-                    }}
-                >
-                    {tag.title}
-                </Tag>
-            ))}
+            <Scrollbars
+                autoHide
+                autoHideTimeout={1000}
+                autoHideDuration={200}
+                style={{ width: '100%', height: '100%' }}
+                renderView={props => (
+                    <div
+                        {...props}
+                        style={{
+                            ...props.style,
+                            overflowY: 'hidden',
+                            whiteSpace: 'nowrap',
+                            display: 'inline-flex'
+                        }}
+                    />
+                )}
+            >
+                {visitedViews.map((tag) => (
+                    <Tag
+                        key={tag.pathname}
+                        closable={tag.closable}
+                        color={location.pathname === tag.pathname ? 'blue' : 'default'}
+                        onClick={() => navigate(tag.pathname)}
+                        onClose={(e) => {
+                            e.preventDefault();
+                            closeView(tag);
+                        }}
+                    >
+                        {tag.title}
+                    </Tag>
+                ))}
+            </Scrollbars>
         </div>
     );
 };

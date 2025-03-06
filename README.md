@@ -62,3 +62,4 @@ npm run dev
 2. antd
 3. @ant-design/icons 
 4. @ant-design/pro-components
+5. react-custom-scrollbars https://github.com/malte-wessel/react-custom-scrollbars?tab=readme-ov-file#react-custom-scrollbars
