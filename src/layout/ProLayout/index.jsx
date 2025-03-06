@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Outlet, useNavigate, useLocation} from 'react-router-dom';
-import {Dropdown, message} from 'antd';
+import {Dropdown, message, Modal} from 'antd';
 import {UserOutlined, LogoutOutlined} from '@ant-design/icons';
 import {ProLayout} from '@ant-design/pro-components';
 import {loopMenuItem} from "@/utils/menu";
@@ -45,10 +45,19 @@ export default (props) => {
         },
     ]
 
-    const onClick = ({key}) => {
+    const onClick = async ({key}) => {
         if (key === 'Logout') {
-            message.success('退出登录成功');
-            // 这里添加您的登出逻辑
+            Modal.confirm({
+                title: '登出',
+                content: '确定要退出系统吗?',
+                okText: '确定',
+                cancelText: '取消',
+                onOk: async () => {
+                    await message.success('退出登录成功',2);
+                    // 这里添加您的登出逻辑
+                    navigate(`${key}`);
+                }
+            })
             return;
         }
         navigate(`${key}`);

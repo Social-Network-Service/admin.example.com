@@ -35,7 +35,7 @@ export default function App() {
     }
 
     return (
-        <ConfigProvider theme={{token: {colorPrimary: '#ffffff'}}}>
+        <ConfigProvider theme={{token: {colorPrimary: '#1890ff'}}}>
             <BrowserRouter>
                 <Router {...state}></Router>
             </BrowserRouter>
