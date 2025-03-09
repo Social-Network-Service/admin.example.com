@@ -5,9 +5,26 @@
 React Admin App 是一个免费开源的中后台模版。使用了最新的`react 18.x`,`react-router 6.x`,`antd5.x`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
 模板集成了基础权限、国际化以及各种常用组件。
 
+## 功能
+
+```text
+- 登录 / 注册 / 注销
+
+- 权限管理
+    - 路由权限
+    - 功能权限
+
+- 错误页面
+    - 401
+    - 404
+
+- 重定向到指定页面
+
+```
+
 ## 目录结构
 
-```bash
+```text
 ├─ public                     # 静态资源
 │   ├─ favicon.ico            # favicon图标
 │   └─ index.html             # html模板
@@ -63,3 +80,10 @@ npm run dev
 3. @ant-design/icons 
 4. @ant-design/pro-components
 5. react-custom-scrollbars https://github.com/malte-wessel/react-custom-scrollbars?tab=readme-ov-file#react-custom-scrollbars
+
+### 参考
+
+React 管理后台项目收集：https://github.com/qq735675958/react-antd-admin 
+
+https://github.com/z-9527/react-admin-master 
+https://z-9527.github.io/react-admin-master/#/react-music-master/home/navigation/menu
