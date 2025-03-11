@@ -14,6 +14,7 @@ export default () => {
                     <p>索引 = {index}</p>
                     <p>图片地址 = {item.url}</p>
                 </div>
+                /*return <div></div>*/
             }}></Waterfall>
 
             <div style={{textAlign: "center"}}>
