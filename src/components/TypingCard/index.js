@@ -18,7 +18,7 @@ export class TypingCard extends React.Component {
   }
   render() {
     return (
-      <Card title={this.props.title} style={{minHeight:this.props.height}} id={this.props.id}>
+      <Card size='small' title={this.props.title} style={{minHeight:this.props.height}} id={this.props.id}>
         <div style={{display:'none'}} ref={el => this.source = el} dangerouslySetInnerHTML={{__html:this.props.source}}/>
         <div ref={el => this.output = el}/>
       </Card>

@@ -2,13 +2,6 @@
   "code": 0,
   "data": [
     {
-      "id": 100,
-      "key": "AGI",
-      "name": "AGI",
-      "path": "/AGI",
-      "icon": "heart"
-    },
-    {
       "id": 200,
       "key": "SACP",
       "name": "SACP",

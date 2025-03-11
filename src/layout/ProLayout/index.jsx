@@ -93,9 +93,6 @@ export default (props) => {
                 setOpenKeys(val)
             }}
             token={{
-                header: {
-                    colorBgMenuItemSelected: '#1890ff',
-                },
                 sider: {
                     colorMenuBackground: '#001529',
                     colorTextMenu: 'rgba(255, 255, 255, 0.65)',
