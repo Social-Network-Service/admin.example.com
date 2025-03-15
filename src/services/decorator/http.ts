@@ -44,7 +44,7 @@ function validateOptions(options: RequestOptions): void {
  */
 function extractUrlParams(urlTemplate: string): string[] {
   const params: string[] = []
-  urlTemplate.replace(/:(\w+)/g, (_, param) => {
+  urlTemplate.replace(/\/:(\w+)/g, (_, param) => {
     params.push(param)
     return ''
   })
@@ -79,8 +79,8 @@ function extractArgsData(args: any[], paramNames: string[]): [Record<string, any
  * @returns 替换后的URL
  */
 function replaceUrlParams(url: string, params: Record<string, any>): string {
-  return url.replace(/:(\w+)/g, (_, key) => {
-    const value = params[key]
+  return url.replace(/\/:(\w+)/g, (_, key) => {
+    const value = `/${params[key]}`
     if (value === undefined) {
       throw new Error(`Missing required URL parameter: ${key}`)
     }
@@ -109,15 +109,18 @@ function createMethodDecorator(method: RequestMethodType) {
         try {
           // 从参数中提取URL参数和请求数据
           const [urlParams] = extractArgsData(args, paramNames)
+            console.log(options.url)
           // 替换URL中的参数
           const url = replaceUrlParams(options.url, urlParams)
+            console.log({url})
           // 获取请求数据
           const data = await originalMethod.apply(this, args)
 
-          options[`${options.method === 'GET' ? 'params' : 'data'}`] = data
-          options.url = url
+            const _options = JSON.parse(JSON.stringify(options))
+            _options[`${options.method === 'GET' ? 'params' : 'data'}`] = data
+            _options.url = url
 
-          return request(options)
+          return request(_options)
         } catch (error) {
           console.error(`Error in ${propertyKey}:`, error)
           throw error

@@ -9,6 +9,16 @@ export const instance = axios.create({
     },
 })
 
+instance.interceptors.request.use(
+    (config) => {
+        return config
+    },
+    (error) => {
+        console.error(error)
+        Promise.reject(error)
+    }
+)
+
 export async function request(options: any) {
     const {
         debug = false,
