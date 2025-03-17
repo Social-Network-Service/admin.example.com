@@ -8,6 +8,13 @@ export function getColumns(params: any): ProColumns[] {
 
     return [
         {
+            title: '序号',
+            dataIndex: 'index',
+            valueType: 'index',
+            width: 48,
+            align: 'center',
+        },
+        {
             key: 'videoName',
             title: '视频名称',
             dataIndex: 'videoName',

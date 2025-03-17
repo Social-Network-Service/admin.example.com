@@ -34,13 +34,15 @@ export default () => {
     const columns = getColumns({onAction})
     const scrollX = getColumnsWidth(columns)
     const request = async (params: any) => {
-        const result = await Video.getVideoAll(params)
-        const data = result;
-        const total = data.length;
+        const { current, ...restParams } = params;
+        const { data: {list, total} } = await Video.getVideoList({
+            ...restParams,
+            pageNum: current
+        });
         const success = true;
         setTotal(total)
         return {
-            data,
+            data: list,
             success,
             total,
         }
