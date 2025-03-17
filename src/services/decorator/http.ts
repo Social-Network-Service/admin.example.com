@@ -3,13 +3,13 @@
  * 提供GET、POST、PUT等HTTP方法的装饰器实现
  */
 
-import { request } from '../request'
+import {request} from '../request';
 import {
-  RequestOptions,
-  RequestDecoratorOptionsType,
-  DecoratorFunction,
-  RequestMethodType,
-} from '../typing'
+    RequestOptions,
+    RequestDecoratorOptionsType,
+    DecoratorFunction,
+    RequestMethodType,
+} from '../typing';
 
 /**
  * 根据参数和HTTP方法创建请求选项对象
@@ -18,9 +18,9 @@ import {
  * @returns 标准化的请求选项对象
  */
 function getOptions(arg: any, method: RequestMethodType): RequestOptions {
-  const options: RequestOptions = typeof arg === 'string' ? { url: arg } : arg
-  options.method = method
-  return options
+    const options: RequestOptions = typeof arg === 'string' ? {url: arg} : arg;
+    options.method = method;
+    return options;
 }
 
 /**
@@ -29,12 +29,12 @@ function getOptions(arg: any, method: RequestMethodType): RequestOptions {
  * @throws {Error} 当URL未提供或HTTP方法不支持时抛出错误
  */
 function validateOptions(options: RequestOptions): void {
-  if (!options.url) {
-    throw new Error('HTTP请求需要URL')
-  }
-  if (!['GET', 'POST', 'PUT', 'DELETE'].includes(options.method)) {
-    throw new Error(`不支持的HTTP方法: ${options.method}`)
-  }
+    if (!options.url) {
+        throw new Error('HTTP请求需要URL');
+    }
+    if (!['GET', 'POST', 'PUT', 'DELETE'].includes(options.method)) {
+        throw new Error(`不支持的HTTP方法: ${options.method}`);
+    }
 }
 
 /**
@@ -43,12 +43,12 @@ function validateOptions(options: RequestOptions): void {
  * @returns 参数名数组
  */
 function extractUrlParams(urlTemplate: string): string[] {
-  const params: string[] = []
-  urlTemplate.replace(/\/:(\w+)/g, (_, param) => {
-    params.push(param)
-    return ''
-  })
-  return params
+    const params: string[] = [];
+    urlTemplate.replace(/\/:(\w+)/g, (_, param) => {
+        params.push(param);
+        return '';
+    });
+    return params;
 }
 
 /**
@@ -58,18 +58,18 @@ function extractUrlParams(urlTemplate: string): string[] {
  * @returns [urlParams, requestData]
  */
 function extractArgsData(args: any[], paramNames: string[]): [Record<string, any>, any] {
-  const urlParams: Record<string, any> = {}
+    const urlParams: Record<string, any> = {};
 
-  // 如果最后一个参数是对象，且不是URL参数，则视为请求数据
-  const hasRequestData = args.length > paramNames.length
-  const requestData = hasRequestData ? args[args.length - 1] : undefined
+    // 如果最后一个参数是对象，且不是URL参数，则视为请求数据
+    const hasRequestData = args.length > paramNames.length;
+    const requestData = hasRequestData ? args[args.length - 1] : undefined;
 
-  // 提取URL参数
-  paramNames.forEach((param, index) => {
-    urlParams[param] = args[index]
-  })
+    // 提取URL参数
+    paramNames.forEach((param, index) => {
+        urlParams[param] = args[index];
+    });
 
-  return [urlParams, requestData]
+    return [urlParams, requestData];
 }
 
 /**
@@ -79,13 +79,13 @@ function extractArgsData(args: any[], paramNames: string[]): [Record<string, any
  * @returns 替换后的URL
  */
 function replaceUrlParams(url: string, params: Record<string, any>): string {
-  return url.replace(/\/:(\w+)/g, (_, key) => {
-    const value = `/${params[key]}`
-    if (value === undefined) {
-      throw new Error(`Missing required URL parameter: ${key}`)
-    }
-    return String(value)
-  })
+    return url.replace(/\/:(\w+)/g, (_, key) => {
+        const value = params[key];
+        if (value === undefined) {
+            throw new Error(`Missing required URL parameter: ${key}`);
+        }
+        return '/' + String(value);
+    });
 }
 
 /**
@@ -94,42 +94,40 @@ function replaceUrlParams(url: string, params: Record<string, any>): string {
  * @returns 返回一个装饰器函数
  */
 function createMethodDecorator(method: RequestMethodType) {
-  return function (arg: string | RequestDecoratorOptionsType): DecoratorFunction {
-    // 格式化请求选项
-    const options = getOptions(arg, method)
-    // 解析URL模板中的参数名
-    const paramNames = extractUrlParams(options.url)
+    return function (arg: string | RequestDecoratorOptionsType): DecoratorFunction {
+        // 格式化请求选项
+        const options = getOptions(arg, method);
+        // 解析URL模板中的参数名
+        const paramNames = extractUrlParams(options.url);
 
-    validateOptions(options)
+        validateOptions(options);
 
-    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-      const originalMethod = descriptor.value
+        return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+            const originalMethod = descriptor.value;
 
-      descriptor.value = async function (...args: any[]) {
-        try {
-          // 从参数中提取URL参数和请求数据
-          const [urlParams] = extractArgsData(args, paramNames)
-            console.log(options.url)
-          // 替换URL中的参数
-          const url = replaceUrlParams(options.url, urlParams)
-            console.log({url})
-          // 获取请求数据
-          const data = await originalMethod.apply(this, args)
+            descriptor.value = async function (...args: any[]) {
+                try {
+                    // 从参数中提取URL参数和请求数据
+                    const [urlParams] = extractArgsData(args, paramNames);
+                    // 创建新的请求选项对象，避免修改闭包中的对象
+                    const requestOptions = {...options};
+                    // 替换URL中的参数
+                    requestOptions.url = replaceUrlParams(options.url, urlParams);
+                    // 获取请求数据
+                    const data = await originalMethod.apply(this, args);
 
-            const _options = JSON.parse(JSON.stringify(options))
-            _options[`${options.method === 'GET' ? 'params' : 'data'}`] = data
-            _options.url = url
+                    requestOptions[`${method === 'GET' ? 'params' : 'data'}`] = data;
 
-          return request(_options)
-        } catch (error) {
-          console.error(`Error in ${propertyKey}:`, error)
-          throw error
-        }
-      }
+                    return request(requestOptions);
+                } catch (error) {
+                    console.error(`Error in ${propertyKey}:`, error);
+                    throw error;
+                }
+            };
 
-      return descriptor
-    }
-  }
+            return descriptor;
+        };
+    };
 }
 
 /**
@@ -145,7 +143,7 @@ function createMethodDecorator(method: RequestMethodType) {
  * }
  * ```
  */
-export const Get = createMethodDecorator('GET')
+export const Get = createMethodDecorator('GET');
 
 /**
  * POST请求装饰器
@@ -162,7 +160,7 @@ export const Get = createMethodDecorator('GET')
  * }
  * ```
  */
-export const Post = createMethodDecorator('POST')
+export const Post = createMethodDecorator('POST');
 
 /**
  * PUT请求装饰器
@@ -179,5 +177,5 @@ export const Post = createMethodDecorator('POST')
  * }
  * ```
  */
-export const Put = createMethodDecorator('PUT')
-export const Delete = createMethodDecorator('DELETE')
+export const Put = createMethodDecorator('PUT');
+export const Delete = createMethodDecorator('DELETE');
