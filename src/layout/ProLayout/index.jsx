@@ -54,7 +54,7 @@ export default (props) => {
                 okText: '确定',
                 cancelText: '取消',
                 onOk: async () => {
-                    await message.success('退出登录成功',2);
+                    await message.success('退出登录成功', 2);
                     // 这里添加您的登出逻辑
                     navigate(`${key}`);
                 }
@@ -93,17 +93,13 @@ export default (props) => {
                 setOpenKeys(val)
             }}
             token={{
-                sider: {
+                /*sider: {
                     colorMenuBackground: '#001529',
-                    colorTextMenu: 'rgba(255, 255, 255, 0.65)',
+                    colorTextMenu: 'rgba(255, 255, 255, 1)',
                     colorTextMenuSelected: '#fff',
+                    colorTextMenuItemHover: "#1890ff",
                     colorBgMenuItemSelected: '#1890ff',
-                },
-            }}
-            menu={{
-                ignoreFlatMenu: true,
-                collapsedShowGroupTitle: true,
-                type: 'sub',
+                }*/
             }}
             avatarProps={{
                 src: userInfo?.avatar || 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
@@ -125,8 +121,8 @@ export default (props) => {
             }}
             headerTitleRender={(logo, title, _) => {
                 return <>
-                    <img src="/images/ant.svg" alt="" style={{ height: '32px', marginRight: collapsed ? '0' : '12px' }}/>
-                    {!collapsed && <span style={{ margin: 0, fontSize: '18px', fontWeight: 'bold' }}>React Admin</span>}
+                    <img src="/images/ant.svg" alt="" style={{height: '32px', marginRight: collapsed ? '0' : '12px'}}/>
+                    {!collapsed && <span style={{margin: 0, fontSize: '18px', fontWeight: 'bold'}}>React Admin</span>}
                 </>;
             }}
             headerContentRender={(props) => {
@@ -137,7 +133,7 @@ export default (props) => {
                     onClick={() => {
                         setPathname(item.path);
                         navigate(item.path, {
-                            state: { title: item.name }
+                            state: {title: item.name}
                         });
                     }}
                 >
@@ -146,7 +142,7 @@ export default (props) => {
             )}
             collapsedButtonRender={() => null}
         >
-            <TagsView />
+            <TagsView/>
             <div className="main-container">
                 <Outlet/>
             </div>

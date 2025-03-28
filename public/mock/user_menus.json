@@ -121,6 +121,10 @@
           ]
         },
         {
+          "name": "气泡卡片(Popover)",
+          "path": "/AntDesign/Popover"
+        },
+        {
           "name": "对话框(Modal)",
           "path": "/AntDesign/Modal"
         },
