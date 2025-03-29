@@ -151,10 +151,6 @@
         {
           "name": "页面容器(PageContainer)",
           "path": "/AntDesign/PageContainer"
-        },
-        {
-          "name": "富文本编辑器(RichTextEditor)",
-          "path": "/AntDesign/RichTextEditor"
         }
       ]
     },
@@ -227,18 +223,23 @@
       "id": 700,
       "key": "component",
       "name": "自定义组件",
-      "path": "/Component",
+      "path": "/component",
       "icon": "LikeOutlined",
       "routes": [
         {
           "id": 701,
           "name": "图片上传(UploadImage)",
-          "path": "/Component/UploadImage"
+          "path": "/component/UploadImage"
         },
         {
-          "id": 702,
-          "name": "图标(SvgIcon)",
-          "path": "/Component/SvgIcon"
+        "id": 702,
+        "name": "图标(SvgIcon)",
+        "path": "/component/SvgIcon"
+        },
+        {
+          "id": 703,
+          "name": "富文本编辑器(RichTextEditor)",
+          "path": "/component/RichTextEditor"
         }
       ]
     }

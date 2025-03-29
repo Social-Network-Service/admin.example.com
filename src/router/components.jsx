@@ -47,7 +47,7 @@ const components = {
     '/AntDesign/Tabs': wrapComponent(lazy(() => import('@/pages/AntDesign/Tabs/index'))),
     '/AntDesign/PageContainer': wrapComponent(lazy(() => import('@/pages/AntDesign/PageContainer/index'))),
     '/AntDesign/Modal': wrapComponent(lazy(() => import('@/pages/AntDesign/Modal/index'))),
-    '/AntDesign/RichTextEditor': wrapComponent(lazy(() => import('@/pages/AntDesign/RichTextEditor/index'))),
+
     '/AntDesign/Popover': wrapComponent(lazy(() => import('@/pages/AntDesign/Popover/index'))),
 
     '/Demo/AudioVisualization': wrapComponent(lazy(() => import('@/pages/Demo/AudioVisualization/index'))),
@@ -58,5 +58,7 @@ const components = {
 
     '/Multimedia/Image': wrapComponent(lazy(() => import('@/pages/Multimedia/Image/index'))),
     '/Multimedia/Video': wrapComponent(lazy(() => import('@/pages/Multimedia/Video/index'))),
+
+    '/component/RichTextEditor': wrapComponent(lazy(() => import('@/pages/component/RichTextEditor/index'))),
 }
 export default components
