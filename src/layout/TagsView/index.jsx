@@ -29,6 +29,9 @@ const TagsView = () => {
     };
 
     const addView = (view) => {
+        if (view.pathname === '/' || view.pathname === '/Dashboard')
+            return;
+
         setVisitedViews((prevViews) => {
             const isExist = prevViews.some((v) => v.pathname === view.pathname);
             if (!isExist) {

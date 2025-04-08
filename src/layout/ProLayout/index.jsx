@@ -43,6 +43,7 @@ export default (props) => {
         if (key === 'Logout') {
             Modal.confirm({
                 icon: null,
+                centered:true,
                 title: '提示！',
                 content: '确定要退出系统吗?',
                 okText: '确定',

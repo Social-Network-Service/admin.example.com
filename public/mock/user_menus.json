@@ -155,7 +155,7 @@
       "key": "AntDesign Pro",
       "name": "AntDesignPro",
       "path": "/AntDesignPro",
-      "icon": "SmileOutlined",
+      "icon": "OpenAIOutlined",
       "routes": [
         {
           "name": "页面容器(PageContainer)",
