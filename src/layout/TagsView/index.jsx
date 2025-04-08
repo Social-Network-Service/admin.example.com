@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { Tag } from 'antd';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Scrollbars } from 'react-custom-scrollbars';
+import React, {useEffect, useState} from 'react';
+import {Tag} from 'antd';
+import {useLocation, useNavigate} from 'react-router-dom';
+import {Scrollbars} from 'react-custom-scrollbars';
 import './index.scss';
 
 const TagsView = () => {
-    const [visitedViews, setVisitedViews] = useState([]);
+    const [visitedViews, setVisitedViews] = useState([{
+        title: '首页',
+        pathname: '/Dashboard',
+        closable: false
+    }]);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -13,12 +17,23 @@ const TagsView = () => {
         addView(location);
     }, [location]);
 
+    const getRouteName = (pathname) => {
+        const path = pathname.split('/').filter(Boolean)[0];
+        const routeNames = {
+            'Dashboard': '首页',
+            'UserCenter': '用户中心',
+            'Login': '登录',
+            'Logout': '注销'
+        };
+        return routeNames[path] || '未知页面';
+    };
+
     const addView = (view) => {
         setVisitedViews((prevViews) => {
             const isExist = prevViews.some((v) => v.pathname === view.pathname);
             if (!isExist) {
                 return [...prevViews, {
-                    title: view.state?.title || '未知页面',
+                    title: view.state?.title || getRouteName(view.pathname),
                     pathname: view.pathname,
                     closable: view.pathname !== '/dashboard'
                 }];
@@ -48,7 +63,7 @@ const TagsView = () => {
                 autoHide
                 autoHideTimeout={1000}
                 autoHideDuration={200}
-                style={{ width: '100%', height: '100%' }}
+                style={{width: '100%', height: '100%'}}
                 renderView={props => (
                     <div
                         {...props}

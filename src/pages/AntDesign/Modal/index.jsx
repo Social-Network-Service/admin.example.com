@@ -37,11 +37,11 @@ export default () => {
                         ]
                     }
                     Modal.info({
-                        title: '消息详情',
+                        title: '对象序列化信息',
                         closable: true,
                         centered: true,
                         content: (
-                            <div style={{whiteSpace: 'pre-wrap'}}>{`${JSON.stringify(obj, null, 2)}`}</div>
+                            <div style={{whiteSpace: 'pre-wrap',wordBreak:'break-all'}}>{`${JSON.stringify(obj, null, 2)}`}</div>
                         ),
                         maskClosable: true,
                         icon: null,

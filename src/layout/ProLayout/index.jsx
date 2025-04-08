@@ -8,20 +8,12 @@ import Breadcrumb from '../Breadcrumb';
 import TagsView from '../TagsView';
 import './index.scss';
 
-let count = 1;
-// const defaultOpenKeys = ['/SACP', '/Demo']
-const defaultOpenKeys = ['/AntDesign']
-// const defaultOpenKeys = ['/Multimedia']
-
 export default (props) => {
     const {userInfo, userMenus} = props
-    const [pathname, setPathname] = useState('/');
+    const menu_fold = JSON.parse(localStorage.getItem("menu_fold")) || false;
     const navigate = useNavigate();
     const location = useLocation();
-
-    const menu_fold = JSON.parse(localStorage.getItem("menu_fold")) || false;
     const [collapsed, setCollapsed] = useState(menu_fold);
-    const [openKeys, setOpenKeys] = useState(defaultOpenKeys);
 
     useEffect(() => {
         var onChangeMenuFoldState = (event) => {
@@ -50,7 +42,8 @@ export default (props) => {
     const onClick = async ({key}) => {
         if (key === 'Logout') {
             Modal.confirm({
-                title: '登出',
+                icon: null,
+                title: '提示！',
                 content: '确定要退出系统吗?',
                 okText: '确定',
                 cancelText: '取消',
@@ -83,25 +76,9 @@ export default (props) => {
             fixSiderbar={true}
             layout={'mix'}
             location={{
-                pathname,
+                pathname: location.pathname,
             }}
-            openKeys={openKeys}
             siderWidth={200}
-            onOpenChange={(val) => {
-                if (count++ === 1 && val.length === 0) {
-                    val = defaultOpenKeys
-                }
-                setOpenKeys(val)
-            }}
-            token={{
-                /*sider: {
-                    colorMenuBackground: '#001529',
-                    colorTextMenu: 'rgba(255, 255, 255, 1)',
-                    colorTextMenuSelected: '#fff',
-                    colorTextMenuItemHover: "#1890ff",
-                    colorBgMenuItemSelected: '#1890ff',
-                }*/
-            }}
             avatarProps={{
                 src: userInfo?.avatar || 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
                 size: 'small',
@@ -132,7 +109,6 @@ export default (props) => {
             menuItemRender={(item, dom) => (
                 <div
                     onClick={() => {
-                        setPathname(item.path);
                         navigate(item.path, {
                             state: {title: item.name}
                         });

@@ -28,9 +28,7 @@ const generateRoutesFromMenus = (menus) => {
         return null;
     })
 
-    return routes.filter((item) => {
-        return item;
-    }).flat(Infinity);
+    return routes.filter(Boolean).flat(Infinity);
 };
 
 const Router = (props) => {
