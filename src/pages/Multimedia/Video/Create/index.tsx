@@ -26,6 +26,10 @@ export default ({title, visible, setVisible, data, actionRef}: PopupProps) => {
     }
 
     const onFinish = async (formData: any): Promise<any> => {
+        formData.courseId = 1;
+        formData.duration = 1;
+        formData.sortOrder = 1;
+
         if (data?.videoId) {
             await Video.updateVideo(data.videoId, formData)
         } else {
@@ -40,8 +44,8 @@ export default ({title, visible, setVisible, data, actionRef}: PopupProps) => {
 
 
     const initialValues = {
-        videoName: '视频name',
-        videoUrl: '视频url',
+        title: '视频name',
+        url: '视频url',
     }
 
     return (
@@ -59,7 +63,7 @@ export default ({title, visible, setVisible, data, actionRef}: PopupProps) => {
         >
             <ProFormText
                 label="视频名称"
-                name="videoName"
+                name="title"
                 rules={[
                     {
                         required: true,
@@ -72,7 +76,7 @@ export default ({title, visible, setVisible, data, actionRef}: PopupProps) => {
 
             <ProFormTextArea
                 label="视频路径"
-                name="videoUrl"
+                name="url"
             />
         </ModalForm>
     )

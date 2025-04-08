@@ -11,6 +11,7 @@ import './index.scss';
 let count = 1;
 // const defaultOpenKeys = ['/SACP', '/Demo']
 const defaultOpenKeys = ['/AntDesign']
+// const defaultOpenKeys = ['/Multimedia']
 
 export default (props) => {
     const {userInfo, userMenus} = props

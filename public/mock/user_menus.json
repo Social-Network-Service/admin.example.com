@@ -82,8 +82,8 @@
       "routes": [
         {
           "name": "布局",
-          "path":"/AntDesign/Layout",
-          "routes":[
+          "path": "/AntDesign/Layout",
+          "routes": [
             {
               "name": "栅格(Row/Col)",
               "path": "/AntDesign/Layout/Grid"
@@ -147,10 +147,19 @@
         {
           "name": "标签页(Tabs)",
           "path": "/AntDesign/Tabs"
-        },
+        }
+      ]
+    },
+    {
+      "id": 350,
+      "key": "AntDesign Pro",
+      "name": "AntDesignPro",
+      "path": "/AntDesignPro",
+      "icon": "SmileOutlined",
+      "routes": [
         {
           "name": "页面容器(PageContainer)",
-          "path": "/AntDesign/PageContainer"
+          "path": "/AntDesignPro/PageContainer"
         }
       ]
     },
@@ -174,7 +183,7 @@
     {
       "id": 500,
       "key": "Test",
-      "name": "Test",
+      "name": "测试",
       "path": "/Test",
       "icon": "TransactionOutlined",
       "routes": [
@@ -232,9 +241,9 @@
           "path": "/component/UploadImage"
         },
         {
-        "id": 702,
-        "name": "图标(SvgIcon)",
-        "path": "/component/SvgIcon"
+          "id": 702,
+          "name": "图标(SvgIcon)",
+          "path": "/component/SvgIcon"
         },
         {
           "id": 703,

@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react'
+import {useRef, useState} from 'react'
 import {Button, Typography} from 'antd'
 import {ProTable} from '@ant-design/pro-components'
 import {ActionType, createActionFun} from '@/utils/action'
@@ -34,8 +34,8 @@ export default () => {
     const columns = getColumns({onAction})
     const scrollX = getColumnsWidth(columns)
     const request = async (params: any) => {
-        const { current, ...restParams } = params;
-        const { data: {list, total} } = await Video.getVideoList({
+        const {current, ...restParams} = params;
+        const {data: {list, total}} = await Video.getVideoList({
             ...restParams,
             pageNum: current
         });

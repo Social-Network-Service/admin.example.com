@@ -1,7 +1,7 @@
 import {Delete, Get, Post, Put} from '../decorator/http'
 
 export class Video {
-    @Get({url: 'http://localhost:8081/social-api/api/video/list'})
+    @Get({url: 'http://localhost:8081/social-api/api/video/list', formatResponseTime: true})
     static async getVideoList(params: any = {}) {
         return params
     }

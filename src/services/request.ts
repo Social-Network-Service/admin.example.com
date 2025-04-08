@@ -1,6 +1,6 @@
 import axios from 'axios'
+import {formatTimeDfs} from 'seasun-util';
 
-// 创建axios实例
 export const instance = axios.create({
     baseURL: '',
     timeout: 60 * 1000,
@@ -36,6 +36,10 @@ export async function request(options: any) {
 
         if (response.status === 200) {
             const result = response.data
+
+            if (formatResponseTime) {
+                formatTimeDfs(result)
+            }
 
             return getResponse ? response : result
         }

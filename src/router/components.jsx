@@ -45,10 +45,10 @@ const components = {
     '/AntDesign/Icons': wrapComponent(lazy(() => import('@/pages/AntDesign/Icons/index'))),
     '/AntDesign/Table': wrapComponent(lazy(() => import('@/pages/AntDesign/Table/index'))),
     '/AntDesign/Tabs': wrapComponent(lazy(() => import('@/pages/AntDesign/Tabs/index'))),
-    '/AntDesign/PageContainer': wrapComponent(lazy(() => import('@/pages/AntDesign/PageContainer/index'))),
     '/AntDesign/Modal': wrapComponent(lazy(() => import('@/pages/AntDesign/Modal/index'))),
-
     '/AntDesign/Popover': wrapComponent(lazy(() => import('@/pages/AntDesign/Popover/index'))),
+
+    '/AntDesignPro/PageContainer': wrapComponent(lazy(() => import('@/pages/AntDesignPro/PageContainer/index'))),
 
     '/Demo/AudioVisualization': wrapComponent(lazy(() => import('@/pages/Demo/AudioVisualization/index'))),
     '/Demo/FormCreate': wrapComponent(lazy(() => import('@/pages/Demo/FormCreate/index'))),
