@@ -28,19 +28,19 @@ export default (props) => {
 
     const items = [
         {
-            key: 'UserCenter',
+            key: 'user_center',
             icon: <UserOutlined/>,
             label: '个人中心',
         },
         {
-            key: 'Logout',
+            key: 'logout',
             icon: <LogoutOutlined/>,
             label: '退出登录',
         },
     ]
 
     const onClick = async ({key}) => {
-        if (key === 'Logout') {
+        if (key === 'logout') {
             Modal.confirm({
                 icon: null,
                 centered:true,

@@ -18,10 +18,10 @@ const wrapComponent = (LazyComponent) => {
 
 // 懒加载组件
 const components = {
-    '/Login': wrapComponent(lazy(() => import('@/pages/Login/index'))),
-    '/Logout': wrapComponent(lazy(() => import('@/pages/Logout/index'))),
-    '/Dashboard': wrapComponent(lazy(() => import('@/pages/Dashboard/index'))),
-    '/UserCenter': wrapComponent(lazy(() => import('@/pages/UserCenter/index'))),
+    '/login': wrapComponent(lazy(() => import('@/pages/login/index'))),
+    '/logout': wrapComponent(lazy(() => import('@/pages/logout/index'))),
+    '/dashboard': wrapComponent(lazy(() => import('@/pages/dashboard/index'))),
+    '/user_center': wrapComponent(lazy(() => import('@/pages/user_center/index'))),
     '/404': wrapComponent(lazy(() => import('@/pages/404/index'))),
 
     '/SACP/Mark/MarkVideo': wrapComponent(lazy(() => import('@/pages/SACP/Mark/MarkVideo/index'))),

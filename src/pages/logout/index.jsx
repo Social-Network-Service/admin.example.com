@@ -10,7 +10,7 @@ export default () => {
             setCountdown((prevState) => {
                 if (prevState - 1 <= 0) {
                     _id && window.clearInterval(_id)
-                    navigate(`/Login`, { replace: true })
+                    navigate(`/login`, { replace: true })
                 }
 
                 return prevState - 1
@@ -21,7 +21,7 @@ export default () => {
 
     function onClickLogin() {
         id && window.clearInterval(id)
-        navigate(`/Login`, { replace: true })
+        navigate(`/login`, { replace: true })
     }
 
     return (

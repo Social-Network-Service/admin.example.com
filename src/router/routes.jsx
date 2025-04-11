@@ -5,6 +5,10 @@ import {Navigate} from "react-router-dom";
 
 export let routes = []
 
+export let routeMap = {}
+
+export let routeList = []
+
 export function generateRoutes(userInfo, userMenus) {
     // 生成动态路由配置
     const dynamicRoutes = generateRoutesFromMenus(userMenus);
@@ -12,12 +16,12 @@ export function generateRoutes(userInfo, userMenus) {
     routes = routes.concat([
         // 公共路由
         {
-            path: '/Login',
-            element: React.createElement(components['/Login']),
+            path: '/login',
+            element: React.createElement(components['/login']),
         },
         {
-            path: '/Logout',
-            element: React.createElement(components['/Logout']),
+            path: '/logout',
+            element: React.createElement(components['/logout']),
         },
         {
             path: '/',
@@ -25,15 +29,15 @@ export function generateRoutes(userInfo, userMenus) {
             children: [
                 {
                     path: '',
-                    element: <Navigate to="/Dashboard" replace/>,
+                    element: <Navigate to="/dashboard" replace/>,
                 },
                 {
-                    path: 'Dashboard',
-                    element: React.createElement(components['/Dashboard']),
+                    path: 'dashboard',
+                    element: React.createElement(components['/dashboard']),
                 },
                 {
-                    path: 'UserCenter',
-                    element: React.createElement(components['/UserCenter']),
+                    path: 'user_center',
+                    element: React.createElement(components['/user_center']),
                 },
                 // 添加动态生成的路由
                 ...dynamicRoutes,

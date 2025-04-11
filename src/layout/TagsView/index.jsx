@@ -7,7 +7,7 @@ import './index.scss';
 const TagsView = () => {
     const [visitedViews, setVisitedViews] = useState([{
         title: '首页',
-        pathname: '/Dashboard',
+        pathname: '/dashboard',
         closable: false
     }]);
     const location = useLocation();
@@ -20,16 +20,16 @@ const TagsView = () => {
     const getRouteName = (pathname) => {
         const path = pathname.split('/').filter(Boolean)[0];
         const routeNames = {
-            'Dashboard': '首页',
-            'UserCenter': '用户中心',
-            'Login': '登录',
-            'Logout': '注销'
+            'dashboard': '首页',
+            'user_center': '用户中心',
+            'login': '登录',
+            'logout': '注销'
         };
         return routeNames[path] || '未知页面';
     };
 
     const addView = (view) => {
-        if (view.pathname === '/' || view.pathname === '/Dashboard')
+        if (view.pathname === '/' || view.pathname === '/dashboard')
             return;
 
         setVisitedViews((prevViews) => {

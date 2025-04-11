@@ -8,7 +8,7 @@ export default (props) => {
 
     const {menuData} = props;
     let breadcrumbItems = [
-        {name: '首页', path: '/Dashboard'},
+        {name: '首页', path: '/dashboard'},
     ];
 
     function dfs(item, parent, depth, chain) {
