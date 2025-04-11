@@ -1,21 +1,77 @@
-const constantRoutes = [
-    {
-        name: '首页',
-        path: '/',
-    },
-    {
-        name: '游戏页',
-        path: '/product/:product_key',
-    },
-];
-const dynamicRoutes = []
+import React from 'react';
+import components from "./components";
+import ProLayout from "@/layout/ProLayout";
+import {Navigate} from "react-router-dom";
 
-function generateRoutes(menus) {
-    const sidebarRoutes = filterAsyncRouter(sdata)
-    const rewriteRoutes = filterAsyncRouter(rdata, false, true)
-    const asyncRoutes = filterDynamicRoutes(dynamicRoutes);
+export let routes = []
+
+export function generateRoutes(userInfo, userMenus) {
+    // 生成动态路由配置
+    const dynamicRoutes = generateRoutesFromMenus(userMenus);
+
+    routes = routes.concat([
+        // 公共路由
+        {
+            path: '/Login',
+            element: React.createElement(components['/Login']),
+        },
+        {
+            path: '/Logout',
+            element: React.createElement(components['/Logout']),
+        },
+        {
+            path: '/',
+            element: <ProLayout userInfo={userInfo} userMenus={userMenus}/>,
+            children: [
+                {
+                    path: '',
+                    element: <Navigate to="/Dashboard" replace/>,
+                },
+                {
+                    path: 'Dashboard',
+                    element: React.createElement(components['/Dashboard']),
+                },
+                {
+                    path: 'UserCenter',
+                    element: React.createElement(components['/UserCenter']),
+                },
+                // 添加动态生成的路由
+                ...dynamicRoutes,
+                // 404 路由放在最后
+                {
+                    path: '*',
+                    element: React.createElement(components['/404']),
+                }
+            ]
+        }
+    ]);
 }
 
-function addRoutes(routes) {
+// 递归处理菜单数据，生成路由配置
+export const generateRoutesFromMenus = (menus) => {
+    if (!menus) return [];
 
-}
+    const routes = menus.map(menu => {
+        // 如果没有routes，说明是菜单组，继续处理子菜单
+        if (menu.routes) {
+            return generateRoutesFromMenus(menu.routes);
+        }
+
+        // 如果有路径，创建路由配置
+        if (menu.path) {
+            const element = components[menu.path]
+                ? React.createElement(components[menu.path])
+                :
+                <span>未找到路径{menu.path}对应的页面组件，请检查router/components.jsx模块是否配置了对应的组件。</span>
+            return {
+                path: menu.path,
+                element
+            }
+        }
+
+        return null;
+    })
+
+    return routes.filter(Boolean).flat(Infinity);
+};
+

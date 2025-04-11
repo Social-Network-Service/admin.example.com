@@ -1,0 +1,29 @@
+//清除浮动
+.clearfix {
+  @include clearfix();
+}
+
+// 省略号代替被截断的文本 (元素必须是 block 或 inline-block 级)
+.text-overflow {
+  @include text-overflow();
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.no-interaction {
+  pointer-events: none;
+}
+
+.no-select {
+  user-select: none;
+}

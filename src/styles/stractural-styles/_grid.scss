@@ -1,0 +1,13 @@
+// 容器类
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+
+  // 响应式宽度设置
+  @each $breakpoint, $width in $container-max-widths {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      max-width: $width;
+    }
+  }
+}

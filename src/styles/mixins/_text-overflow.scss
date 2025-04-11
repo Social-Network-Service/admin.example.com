@@ -1,0 +1,9 @@
+// 要让文本溢出显示省略号 (...)，需要同时设置三个 CSS 属性：
+//    text-overflow: ellipsis; - 显示省略号
+//    white-space: nowrap; - 禁止文本换行
+//    overflow: hidden; - 隐藏溢出内容
+@mixin text-overflow() {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

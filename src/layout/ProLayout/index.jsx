@@ -88,6 +88,7 @@ export default (props) => {
                     return (
                         <Dropdown
                             placement="bottomRight"
+                            arrow={true}
                             menu={{
                                 items,
                                 onClick

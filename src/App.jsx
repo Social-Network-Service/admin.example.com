@@ -1,43 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {BrowserRouter,} from 'react-router-dom';
 import {ConfigProvider} from 'antd';
+import Router from '@/router'
 import "./App.scss"
 
-import Router from '@/router'
-import {System} from "@/services";
-
-export default function App() {
-    const [state, setState] = useState({
-        userInfo: null,
-        userMenus: null,
-    });
-
-    useEffect(() => {
-        // 获取用户的基本信息
-        System.getUserInfo().then(result => {
-            setState(prevState => ({
-                ...prevState,
-                userInfo: result.data
-            }));
-        });
-
-        // 获取用户的权限数据
-        System.getUserMenus().then(result => {
-            setState(prevState => ({
-                ...prevState,
-                userMenus: result.data
-            }));
-        });
-    }, []);
-
-    if (!state.userInfo || !state.userMenus) {
-        return ''
-    }
-
+export default ({userInfo, userMenus}) => {
+    console.log({userInfo, userMenus})
     return (
         <ConfigProvider theme={{token: {colorPrimary: '#1890ff'}}}>
             <BrowserRouter>
-                <Router {...state}></Router>
+                <Router/>
             </BrowserRouter>
         </ConfigProvider>
     );
