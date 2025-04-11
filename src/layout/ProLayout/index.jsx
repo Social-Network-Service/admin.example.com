@@ -111,9 +111,7 @@ export default (props) => {
             menuItemRender={(item, dom) => (
                 <div
                     onClick={() => {
-                        navigate(item.path, {
-                            state: {title: item.name}
-                        });
+                        navigate(item.path);
                     }}
                 >
                     {dom}

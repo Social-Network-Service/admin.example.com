@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Tag} from 'antd';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {Scrollbars} from 'react-custom-scrollbars';
+import {getRouteName} from '@/router/routes';
 import './index.scss';
 
 const TagsView = () => {
@@ -17,17 +18,6 @@ const TagsView = () => {
         addView(location);
     }, [location]);
 
-    const getRouteName = (pathname) => {
-        const path = pathname.split('/').filter(Boolean)[0];
-        const routeNames = {
-            'dashboard': '首页',
-            'user_center': '用户中心',
-            'login': '登录',
-            'logout': '注销'
-        };
-        return routeNames[path] || '未知页面';
-    };
-
     const addView = (view) => {
         if (view.pathname === '/' || view.pathname === '/dashboard')
             return;
@@ -36,7 +26,7 @@ const TagsView = () => {
             const isExist = prevViews.some((v) => v.pathname === view.pathname);
             if (!isExist) {
                 return [...prevViews, {
-                    title: view.state?.title || getRouteName(view.pathname),
+                    title: getRouteName(view.pathname),
                     pathname: view.pathname,
                     closable: view.pathname !== '/dashboard'
                 }];
