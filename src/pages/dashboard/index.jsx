@@ -17,7 +17,7 @@ class Home extends React.Component {
                     {imgs.map(item => {
                         return (
                             <div key={item}>
-                                <img src={item} width='100%' height="100%" alt=""/>
+                                <img src={item} width='100%' height="200px" alt=""/>
                             </div>
                         )
                     })}
