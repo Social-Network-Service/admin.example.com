@@ -22,7 +22,7 @@ export const PRO_TABLE_DEFAULT_PROPS: {
 /**
  * ProTable 组件操作列的默认属性
  * */
-export const TABLE_COLUMN_OPTIONS: ProColumnType<any, any> = {
+export const TABLE_COLUMN_PROPS: ProColumnType<any, any> = {
     key: 'option',
     dataIndex: 'option',
     valueType: 'option',

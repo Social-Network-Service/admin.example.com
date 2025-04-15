@@ -1,12 +1,12 @@
 import React, {useCallback, useEffect} from 'react';
 import {Form} from 'antd';
 import {ModalForm, ProFormText} from '@ant-design/pro-components';
-import {UserData} from './types';
+import {UserRecord} from './types';
 
 interface UserModalProps {
     visible: boolean;
     setVisible: (visible: boolean) => void;
-    data?: UserData | null;
+    data?: UserRecord | null;
     onSuccess?: () => void;
 }
 
@@ -34,7 +34,7 @@ export default ({visible, setVisible, data, onSuccess}: UserModalProps) => {
     useEffect(() => {
         if (visible && data) {
             form.setFieldsValue({
-                account: data.name,
+                userName: data.userName,
                 phone: data.phone,
                 email: data.email,
             });
@@ -59,7 +59,7 @@ export default ({visible, setVisible, data, onSuccess}: UserModalProps) => {
             }}
         >
             <ProFormText
-                name="account"
+                name="userName"
                 label="账号"
                 placeholder="请输入账号"
                 rules={[

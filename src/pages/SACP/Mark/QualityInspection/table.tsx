@@ -1,7 +1,7 @@
 import {ProColumns} from '@ant-design/pro-table/es/typing';
 import {Popconfirm, Space, Tag} from 'antd';
 import {ActionType} from '@/utils/action';
-import {TABLE_COLUMN_OPTIONS} from "@/constants";
+import {TABLE_COLUMN_PROPS} from "@/constants";
 
 export function getColumns(params: any): ProColumns[] {
     const {onAction} = params;
@@ -32,7 +32,7 @@ export function getColumns(params: any): ProColumns[] {
             hideInSearch: true,
         },
         {
-            ...TABLE_COLUMN_OPTIONS,
+            ...TABLE_COLUMN_PROPS,
             width: 100,
             render: (value: any, record: any) => {
                 return (
