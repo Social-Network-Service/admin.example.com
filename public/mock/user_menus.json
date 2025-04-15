@@ -52,24 +52,6 @@
               "hideInMenu": true
             }
           ]
-        },
-        {
-          "name": "系统配置",
-          "path": "System",
-          "routes": [
-            {
-              "name": "用户管理",
-              "path": "/SACP/System/User"
-            },
-            {
-              "name": "角色管理",
-              "path": "/SACP/System/Rule"
-            },
-            {
-              "name": "权限管理",
-              "path": "/SACP/System/Menu"
-            }
-          ]
         }
       ]
     },
@@ -249,6 +231,26 @@
           "id": 703,
           "name": "富文本编辑器(RichTextEditor)",
           "path": "/component/RichTextEditor"
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "name": "系统配置",
+      "path": "System",
+      "icon": "SettingOutlined",
+      "routes": [
+        {
+          "name": "用户管理",
+          "path": "/system/user"
+        },
+        {
+          "name": "角色管理",
+          "path": "/system/rule"
+        },
+        {
+          "name": "权限管理",
+          "path": "/system/permission"
         }
       ]
     }

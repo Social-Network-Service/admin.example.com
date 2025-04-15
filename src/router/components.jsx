@@ -29,9 +29,6 @@ const components = {
     '/SACP/Mark/MarkInference': wrapComponent(lazy(() => import('@/pages/SACP/Mark/MarkInference/index'))),
     '/SACP/Mark/QualityInspection': wrapComponent(lazy(() => import('@/pages/SACP/Mark/QualityInspection/index'))),
     '/SACP/Mark/MarkRecord': wrapComponent(lazy(() => import('@/pages/SACP/Mark/MarkRecord/index'))),
-    '/SACP/System/User': wrapComponent(lazy(() => import('@/pages/SACP/System/User/index'))),
-    '/SACP/System/Rule': wrapComponent(lazy(() => import('@/pages/SACP/System/Rule/index'))),
-    '/SACP/System/Menu': wrapComponent(lazy(() => import('@/pages/SACP/System/Menu/index'))),
 
     '/AntDesign/Layout/Grid': wrapComponent(lazy(() => import('@/pages/AntDesign/Layout/Grid/index'))),
     '/AntDesign/Layout/Space': wrapComponent(lazy(() => import('@/pages/AntDesign/Layout/Space/index'))),
@@ -60,5 +57,9 @@ const components = {
     '/Multimedia/Video': wrapComponent(lazy(() => import('@/pages/Multimedia/Video/index'))),
 
     '/component/RichTextEditor': wrapComponent(lazy(() => import('@/pages/component/RichTextEditor/index'))),
+
+    '/system/user': wrapComponent(lazy(() => import('@/pages/system/user/index'))),
+    '/system/rule': wrapComponent(lazy(() => import('@/pages/system/rule/index'))),
+    '/system/permission': wrapComponent(lazy(() => import('@/pages/system/permission/index'))),
 }
 export default components
