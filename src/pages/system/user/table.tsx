@@ -2,9 +2,10 @@ import {ProColumns} from "@ant-design/pro-table/es/typing";
 import {Popconfirm, Space, Tag} from "antd";
 import React from "react";
 import {ActionType} from "utils/action";
-import {UserRecord, UserStatus} from "./types";
+import {UserRecord, Status} from "./types";
+import {StatusMap} from "@/maps";
 
-export function getColumnsWidth(columns: ProColumns[]) {
+function getColumnsWidth(columns: ProColumns[]) {
     return columns
         .map((item) => {
             if (process.env.NODE_ENV === 'development' && !item.hasOwnProperty('width')) {
@@ -38,21 +39,19 @@ export const getTableProps = (
         {
             title: '手机号',
             dataIndex: 'phone',
-            search: false,
             width: 120,
         },
         {
             title: '邮箱',
             dataIndex: 'email',
-            search: false,
             width: 180,
             ellipsis: true,
         },
         {
             title: '状态',
             dataIndex: 'status',
-            search: false,
             width: 80,
+            valueEnum: StatusMap,
         },
         {
             title: '创建时间',
@@ -61,26 +60,34 @@ export const getTableProps = (
             width: 150,
         },
         {
+            title: '更新时间',
+            dataIndex: 'updatedAt',
+            search: false,
+            width: 150,
+        },
+        {
             title: '操作',
             valueType: 'option',
             key: 'option',
             fixed: 'right',
-            width: 200,
+            align: 'center',
+            width: 150,
             render: (_, record) => {
                 return (
                     <Space size={0}>
                         <Popconfirm
-                            title={record.status === 1 ? '确定要停用吗?' : '确定要启用吗?'}
-                            onConfirm={() => onAction(record.status === 1 ? ActionType.DISABLE : ActionType.ENABLE, record)}
+                            title={record.status === Status.Enabled ? '确定要停用吗?' : '确定要启用吗?'}
+                            onConfirm={() => onAction(record.status === Status.Enabled ? ActionType.DISABLE : ActionType.ENABLE, record)}
                             okText="确定"
                             cancelText="取消"
                         >
                             <Tag
+                                className={'link-tag'}
                                 style={{
-                                    color: record.status === 1 ? 'var(--error)' : 'var(--primary)',
+                                    color: record.status === Status.Enabled ? 'var(--error)' : 'var(--primary)',
                                 }}
                             >
-                                {record.status === 1 ? '停用' : '启用'}
+                                {record.status === Status.Enabled ? '停用' : '启用'}
                             </Tag>
                         </Popconfirm>
                         <Tag

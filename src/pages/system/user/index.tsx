@@ -20,6 +20,7 @@ export default () => {
     const onAction = createActionFun({
         [ActionType.CREATE]() {
             show()
+            setCurrentRow(null);
         },
         [ActionType.UPDATE](data: UserRecord) {
             show()
@@ -39,14 +40,11 @@ export default () => {
             page_num: current,
             page_size: pageSize,
         })
-        setTotal(res.total_num)
+        setTotal(res.data.length)
 
         return {
             data: res.data,
             success: true,
-            current: res.page_num,
-            total: res.total_num,
-            pageSize: res.page_size,
         }
     }
 
@@ -54,18 +52,14 @@ export default () => {
         <div className={styles['user-page']}>
             <ProTable<UserRecord>
                 options={false}
-                rowKey="id"
+                rowKey="userId"
                 actionRef={actionRef}
                 columns={columns}
                 request={fetchUserList}
-                scroll={{
-                    x: scrollX, // 所有列宽之和
-                }}
-                search={{
-                    labelWidth: 'auto',
-                }}
+                scroll={{x: scrollX}}
+                search={{labelWidth: 'auto'}}
                 toolbar={{
-                    title: '账号管理',
+                    title: `系统用户 共【${total}】个`,
                     actions: [
                         <Button
                             key="add"
@@ -83,7 +77,7 @@ export default () => {
                     visible={visible}
                     setVisible={setVisible}
                     data={currentRow}
-                    // actionRef={actionRef}
+                    actionRef={actionRef}
                 />
             )}
         </div>

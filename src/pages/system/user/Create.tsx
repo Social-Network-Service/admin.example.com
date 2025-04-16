@@ -1,35 +1,55 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {Ref, useEffect} from 'react';
 import {Form} from 'antd';
-import {ModalForm, ProFormText} from '@ant-design/pro-components';
+import {ModalForm, ProFormSelect, ProFormText} from '@ant-design/pro-components';
+import {User} from "@/services";
+import {StatusList} from "@/maps";
 import {UserRecord} from './types';
 
-interface UserModalProps {
+interface Props {
     visible: boolean;
     setVisible: (visible: boolean) => void;
     data?: UserRecord | null;
+    actionRef: Ref<any>
     onSuccess?: () => void;
 }
 
-export default ({visible, setVisible, data, onSuccess}: UserModalProps) => {
+export default ({visible, setVisible, data, actionRef, onSuccess}: Props) => {
     const [form] = Form.useForm();
     const title = `${data ? '编辑' : '创建'}账号`;
 
-    const handleCancel = useCallback(() => {
-        setVisible(false);
-        form?.resetFields();
-    }, []);
+    useEffect(() => {
+        data && form.setFieldsValue(data)
+    }, [data])
 
-    const handleSubmit = async () => {
-        try {
-            const values = await form.validateFields();
-            // TODO: 根据是否有 data 来判断是新增还是编辑
-            onSuccess?.();
-            return true;
-        } catch (error) {
-            console.error('Form validation failed:', error);
-            return false;
+    const onOpenChange = (open: boolean) => {
+        if (!open) {
+            form.resetFields()
+            setVisible(false)
         }
+    }
+
+    const onFinish = async (formData: any): Promise<any> => {
+        if (data?.userId) {
+            await User.update(data.userId, formData)
+        } else {
+            await User.create(formData)
+        }
+
+        // @ts-ignore
+        actionRef?.current?.reload()
+
+        onSuccess?.();
+
+        return true;
     };
+
+    const initialValues = {
+        userName: 'user',
+        password: "123456",
+        phone: '13800008001',
+        email: 'user@example.com',
+        status: "1",
+    }
 
     useEffect(() => {
         if (visible && data) {
@@ -49,14 +69,13 @@ export default ({visible, setVisible, data, onSuccess}: UserModalProps) => {
             title={title}
             form={form}
             open={visible}
-            onFinish={handleSubmit}
-            onOpenChange={setVisible}
+            labelCol={{span: 4}}
+            wrapperCol={{span: 20}}
+            layout="horizontal"
+            onFinish={onFinish}
+            onOpenChange={onOpenChange}
+            initialValues={initialValues}
             autoFocusFirstInput={!data}
-            modalProps={{
-                onCancel: handleCancel,
-                maskClosable: false,
-                destroyOnClose: true,
-            }}
         >
             <ProFormText
                 name="userName"
@@ -66,6 +85,17 @@ export default ({visible, setVisible, data, onSuccess}: UserModalProps) => {
                     {
                         required: true,
                         message: '请输入账号',
+                    },
+                ]}
+            />
+            <ProFormText
+                name="password"
+                label="密码"
+                placeholder="请输入密码"
+                rules={[
+                    {
+                        required: true,
+                        message: '请输入密码',
                     },
                 ]}
             />
@@ -98,6 +128,15 @@ export default ({visible, setVisible, data, onSuccess}: UserModalProps) => {
                         message: '请输入正确的邮箱格式',
                     },
                 ]}
+            />
+            <ProFormSelect
+                name="status"
+                label="状态"
+                rules={[{required: true}]}
+                fieldProps={{
+                    options: StatusList,
+                    showSearch: true
+                }}
             />
         </ModalForm>
     );

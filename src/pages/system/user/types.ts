@@ -13,7 +13,7 @@ export interface UserSearchParams {
     account?: string;
 }
 
-export enum UserStatus {
+export enum Status {
     Disabled = 0,
     Enabled = 1
 }

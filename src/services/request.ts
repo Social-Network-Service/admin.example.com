@@ -45,7 +45,7 @@ export async function request(options: any) {
         }
         return Promise.reject(response)
     } catch (error: any) {
-        console.log('Request canceled:', error?.message)
+        console.log('Request error:', error?.message)
         throw error
     } finally {
 
