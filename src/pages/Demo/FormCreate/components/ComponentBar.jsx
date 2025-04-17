@@ -24,7 +24,7 @@ export default () => {
 
   return (
     <div className="component-bar">
-      <div className="component-list">
+      <div className="component-group">
         {
           leftComponents.map((componentGroup, index) => {
             const {title, list} = componentGroup
@@ -44,7 +44,7 @@ export default () => {
               )
             })
             return (
-              <div key={index}>
+              <div className={'component-list'} key={index}>
                 <div className="component-title">
                   {title}
                 </div>
