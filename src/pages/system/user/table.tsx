@@ -57,13 +57,13 @@ export const getTableProps = (
             title: '创建时间',
             dataIndex: 'createdAt',
             search: false,
-            width: 150,
+            width: 200,
         },
         {
             title: '更新时间',
             dataIndex: 'updatedAt',
             search: false,
-            width: 150,
+            width: 200,
         },
         {
             title: '操作',

@@ -7,8 +7,8 @@ export class User {
     }
 
     @Post({url: 'http://localhost:8081/social/user', errorNotice: true})
-    static async create(params: any) {
-        return params
+    static async create(data: any) {
+        return data
     }
 
     @Put({url: 'http://localhost:8081/social/user/:id'})
@@ -18,10 +18,11 @@ export class User {
 
     @Delete({url: 'http://localhost:8081/social/user/:id'})
     static async delete(id: any) {
+        return;
     }
 
-    @Get({url: 'http://localhost:8081/social/user/all'})
-    static async changeStatus(params: any) {
-        return params
+    @Post({url: 'http://localhost:8081/social/user/status'})
+    static async status(data: any) {
+        return data
     }
 }

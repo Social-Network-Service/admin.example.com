@@ -30,7 +30,11 @@ export default () => {
             actionRef.current.reload();
         },
         async [ActionType.ENABLE](data: UserRecord) {
-            await User.changeStatus({id: data.userId, status: data.status === 1 ? 2 : 1})
+            await User.status({userId: data.userId, status: 1})
+            actionRef.current.reload()
+        },
+        async [ActionType.DISABLE](data: UserRecord) {
+            await User.status({userId: data.userId, status: 0})
             actionRef.current.reload()
         },
     })
