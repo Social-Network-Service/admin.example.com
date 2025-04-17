@@ -28,6 +28,5 @@ export class Video {
 
     @Delete({url: 'http://localhost:8081/social/video/:id'})
     static async deleteVideo(id: any) {
-        console.log({id})
     }
 }

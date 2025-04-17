@@ -1,4 +1,4 @@
-import {Get, Post, Put} from '../decorator/http'
+import {Delete, Get, Post, Put} from '../decorator/http'
 
 export class User {
     @Get({url: 'http://localhost:8081/social/user/all', formatResponseTime: true})
@@ -14,6 +14,10 @@ export class User {
     @Put({url: 'http://localhost:8081/social/user/:id'})
     static async update(id: any, data: any = {}) {
         return data
+    }
+
+    @Delete({url: 'http://localhost:8081/social/user/:id'})
+    static async delete(id: any) {
     }
 
     @Get({url: 'http://localhost:8081/social/user/all'})

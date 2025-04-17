@@ -74,28 +74,32 @@ export const getTableProps = (
             width: 150,
             render: (_, record) => {
                 return (
-                    <Space size={0}>
+                    <Space>
                         <Popconfirm
-                            title={record.status === Status.Enabled ? '确定要停用吗?' : '确定要启用吗?'}
+                            title={`确定要${record.status === Status.Enabled ? '停用' : '启用'}吗?`}
                             onConfirm={() => onAction(record.status === Status.Enabled ? ActionType.DISABLE : ActionType.ENABLE, record)}
                             okText="确定"
                             cancelText="取消"
                         >
-                            <Tag
-                                className={'link-tag'}
+                            <a style={{color: record.status === Status.Enabled ? 'var(--error)' : 'var(--primary)',}}>
+                                {record.status === Status.Enabled ? '停用' : '启用'}
+                            </a>
+                        </Popconfirm>
+                        <a onClick={() => onAction(ActionType.UPDATE, record)}>编辑</a>
+                        <Popconfirm
+                            title={'确定要删除?'}
+                            onConfirm={() => onAction(ActionType.DELETE, record)}
+                            okText="确定"
+                            cancelText="取消"
+                        >
+                            <a
                                 style={{
-                                    color: record.status === Status.Enabled ? 'var(--error)' : 'var(--primary)',
+                                    color: 'var(--error)',
                                 }}
                             >
-                                {record.status === Status.Enabled ? '停用' : '启用'}
-                            </Tag>
+                                删除
+                            </a>
                         </Popconfirm>
-                        <Tag
-                            className={'link-tag'}
-                            onClick={() => onAction(ActionType.UPDATE, record)}
-                        >
-                            编辑
-                        </Tag>
                     </Space>
                 );
             },

@@ -1,6 +1,5 @@
 import React, {useRef, useState} from 'react';
 import {Button} from 'antd';
-import {PlusOutlined} from '@ant-design/icons';
 import {UserRecord} from './types';
 import Create from './Create';
 import usePopup from '@/hooks/usePopup';
@@ -25,6 +24,10 @@ export default () => {
         [ActionType.UPDATE](data: UserRecord) {
             show()
             setCurrentRow(data)
+        },
+        async [ActionType.DELETE](data: UserRecord) {
+            await User.delete(data.userId);
+            actionRef.current.reload();
         },
         async [ActionType.ENABLE](data: UserRecord) {
             await User.changeStatus({id: data.userId, status: data.status === 1 ? 2 : 1})
@@ -64,7 +67,6 @@ export default () => {
                         <Button
                             key="add"
                             type="primary"
-                            icon={<PlusOutlined/>}
                             onClick={() => onAction(ActionType.CREATE)}
                         >
                             创建账号
