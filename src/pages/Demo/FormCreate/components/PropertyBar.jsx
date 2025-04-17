@@ -52,7 +52,7 @@ export default () => {
                 />
             </Form.Item>
         </Form>)
-        : <span style={{color: 'rgba(150,150,150,0.5)'}}>请选择表单录入项</span>
+        : <span style={{color: 'rgba(150,150,150,0.5)'}}>请选择表单项</span>
 
     const items = [
         {
