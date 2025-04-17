@@ -2,7 +2,7 @@
 
 ## 简介
 
-React Admin App 是一个免费开源的中后台模版。使用了最新的`react 18.x`,`react-router 6.x`,`antd5.x`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
+React Admin App 是一个免费开源的中后台模版。使用了最新的 TypeScript + React + Ant Design 等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
 模板集成了基础权限、国际化以及各种常用组件。
 
 ## 功能
