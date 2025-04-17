@@ -35,18 +35,18 @@ type IProps = {
  * fileSizeUnit: 文件单位： kb、Mb
  * msg: 上传文件类型错误提示文案
  * */
-const ImageUpload = ({
-                         action=null,
-                         innerBtn,
-                         msg = '',
-                         accept = 'image/jpeg,image/png,image/jpg,image/gif',
-                         listType = 'picture-card',
-                         fileSize = 4,
-                         fileSizeUnit = 'Mb',
-                         initialImages = [],
-                         multiple = true,
-                         ...rest
-                     }: IProps) => {
+export const UploadImage = ({
+                                action = null,
+                                innerBtn,
+                                msg = '',
+                                accept = 'image/jpeg,image/png,image/jpg,image/gif',
+                                listType = 'picture-card',
+                                fileSize = 4,
+                                fileSizeUnit = 'Mb',
+                                initialImages = [],
+                                multiple = true,
+                                ...rest
+                            }: IProps) => {
     const [previewOpen, setPreviewOpen] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
     const [fileList, setFileList] = useState<any[]>([]);
@@ -160,5 +160,3 @@ const ImageUpload = ({
         </>
     );
 };
-
-export default ImageUpload;

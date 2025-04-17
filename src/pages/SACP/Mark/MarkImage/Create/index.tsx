@@ -2,7 +2,7 @@ import React, {Ref, useEffect} from 'react'
 import {Form, Input} from 'antd'
 import {ModalForm, ProFormSelect, ProFormText, ProFormTextArea} from '@ant-design/pro-components'
 import {Message} from '@/services'
-import UploadImage from '@/components/UploadImage'
+import {UploadImage} from '@/components'
 
 export type PopupProps = {
     visible: boolean
