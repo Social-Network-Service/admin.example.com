@@ -1,6 +1,7 @@
 import {Popconfirm, Space} from 'antd';
 import {ActionType} from '@/utils/action';
 import {TABLE_COLUMN_PROPS} from "@/constants";
+import {StatusMap} from "@/maps";
 
 export function getColumnsWidth(columns) {
   return columns
@@ -28,10 +29,8 @@ export function getColumns(params) {
     {
       title: '状态',
       dataIndex: 'status',
-      key: 'status',
-      width: 100,
-      align: 'center',
-      valueType: 'input',
+      width: 80,
+      valueEnum: StatusMap,
     },
     {
       title: '备注说明',
@@ -39,6 +38,7 @@ export function getColumns(params) {
       key: 'type',
       width: 150,
       valueType: 'select',
+      search: false,
     },
     {
       title: '创建时间',
@@ -46,7 +46,7 @@ export function getColumns(params) {
       key: 'update_at',
       width: 160,
       align: 'center',
-      hideInSearch: true,
+      search: false,
     },
     {
       title: '更新时间',
@@ -54,7 +54,7 @@ export function getColumns(params) {
       key: 'update_at',
       width: 160,
       align: 'center',
-      hideInSearch: true,
+      search: false,
     },
     {
       title: '操作人',
@@ -63,7 +63,7 @@ export function getColumns(params) {
       width: 140,
       align: 'center',
       valueType: 'select',
-      hideInSearch: true,
+      search: false,
     },
     {
       ...TABLE_COLUMN_PROPS,
