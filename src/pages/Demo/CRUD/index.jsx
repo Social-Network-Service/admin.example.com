@@ -65,7 +65,7 @@ export default () => {
         request={request}
         toolBarRender={() => [
           <Button type="primary" onClick={() => onAction(ActionType.CREATE)}>
-            上传图片
+            创建
           </Button>,
         ]}
         headerTitle={<Text>图片 共{total}张</Text>}
