@@ -163,6 +163,11 @@
         {
           "name": "CRUD",
           "path": "/Demo/CRUD"
+        },
+        {
+          "name": "CRUD数据",
+          "path": "/Demo/CRUD/Analysis",
+          "hideInMenu": true
         }
       ]
     },

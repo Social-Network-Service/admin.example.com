@@ -3,11 +3,14 @@ export enum ActionType {
     DELETE = 'delete',
     UPDATE = 'update',
     DETAIL = 'detail',
+    ANALYSIS = 'analysis',
+    STATUS = 'status',
 
     PREVIEW = 'preview',
     CONFIG = 'config',
     CHECK = 'check',
     COPY = 'copy',
+
 
     ENABLE = 'enable',
     DISABLE = 'disable',

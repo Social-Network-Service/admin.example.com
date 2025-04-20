@@ -10,10 +10,12 @@ import {Mark, Template} from "@/services";
 import {getColumns, getColumnsWidth} from './table'
 import Create from './Create'
 import './index.scss'
+import {useNavigate} from "react-router-dom";
 
 const {Text} = Typography
 
 export default () => {
+  const navigate = useNavigate();
   const actionRef = useRef(null)
   const [total, setTotal] = useState(0)
   const [currentRow, setCurrentRow] = useState(null)
@@ -31,11 +33,11 @@ export default () => {
       setCurrentRow(data)
       show()
     },
-    [ActionType.ENABLE](data) {
+    [ActionType.STATUS](data) {
 
     },
-    [ActionType.DISABLE](data) {
-
+    [ActionType.ANALYSIS](data) {
+      navigate('/Demo/CRUD/Analysis')
     },
   })
   const columns = getColumns({onAction})

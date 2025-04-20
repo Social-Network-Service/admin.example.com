@@ -72,11 +72,11 @@ export function getColumns(params) {
       render: (value, record) => {
         return (
           <Space>
-            <a onClick={() => onAction(ActionType.UPDATE, record)}>启用</a>
-            <a onClick={() => onAction(ActionType.UPDATE, record)}>停用</a>
-            <a onClick={() => onAction(ActionType.UPDATE, record)}>数据</a>
+            <a onClick={() => onAction(ActionType.STATUS, record)}>启用</a>
+            <a onClick={() => onAction(ActionType.STATUS, record)}>停用</a>
+            <a onClick={() => onAction(ActionType.ANALYSIS, record)}>数据</a>
 
-            <a onClick={() => onAction(ActionType.UPDATE, record)}>查看</a>
+            <a onClick={() => onAction(ActionType.DETAIL, record)}>查看</a>
             <a onClick={() => onAction(ActionType.UPDATE, record)}>编辑</a>
             <Popconfirm
               title={'确定要删除?'}
