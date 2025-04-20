@@ -159,6 +159,10 @@
         {
           "name": "表单创建",
           "path": "/Demo/FormCreate"
+        },
+        {
+          "name": "CRUD",
+          "path": "/Demo/CRUD"
         }
       ]
     },

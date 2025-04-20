@@ -2,7 +2,7 @@ import {useNavigate} from 'react-router-dom';
 import {ProTable} from '@ant-design/pro-components'
 
 import {ActionType, createActionFun} from '@/utils/action'
-import {Message} from '@/services'
+import {Template} from '@/services'
 import {PRO_TABLE_DEFAULT_PROPS} from '@/constants'
 
 import {getColumns, getColumnsWidth} from './table'
@@ -17,7 +17,7 @@ export default () => {
     const columns = getColumns({onAction})
     const scrollX = getColumnsWidth(columns)
     const request = async (params: any) => {
-        const result = await Message.templateList(params)
+        const result = await Template.templateList(params)
         const {success, data, total_num: total} = result
 
         return {

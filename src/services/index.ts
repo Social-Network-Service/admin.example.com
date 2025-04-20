@@ -1,6 +1,6 @@
 export * from './modules/System'
 export * from './modules/Menu'
 export * from './modules/Mark'
-export * from './modules/Message'
+export * from './modules/Template'
 export * from './modules/Video'
 export * from './modules/User'

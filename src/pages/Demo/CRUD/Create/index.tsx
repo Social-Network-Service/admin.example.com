@@ -1,7 +1,7 @@
 import React, {Ref, useEffect} from 'react'
 import {Form, Input} from 'antd'
 import {ModalForm, ProFormSelect, ProFormText, ProFormTextArea} from '@ant-design/pro-components'
-import {Message} from '@/services'
+import {Template} from '@/services'
 import {UploadImage} from '@/components'
 
 export type PopupProps = {
@@ -27,15 +27,11 @@ export default ({title, visible, setVisible, data, actionRef}: PopupProps) => {
     }
 
     const onFinish = async (formData: any): Promise<any> => {
-        let fun = null
         if (data?.id) {
-            formData.id = data.id
-            fun = Message.templateUpdate
+            await Template.templateUpdate({id: data.id, ...formData})
         } else {
-            fun = Message.templateCreate
+            await Template.templateCreate({...formData})
         }
-
-        await fun(formData)
 
         // @ts-ignore
         actionRef?.current?.reload()

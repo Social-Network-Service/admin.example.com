@@ -1,6 +1,6 @@
 import {Get} from '../decorator/http'
 
-export class Message {
+export class Template {
     @Get({url: '/mock/template_list.json'})
     static async templateList(params: any = {}) {
         return params

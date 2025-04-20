@@ -7,7 +7,7 @@ import {Card, List} from "antd";
 
 import MarkItem from "./MarkItem";
 import "./index.scss";
-import {Message} from "@/services"
+import {Template} from "@/services"
 import Waterfall from './Waterfall'
 
 export type MarkItemType = {
@@ -24,7 +24,7 @@ export default () => {
     const [total, setTotal] = useState<number>(0);
     const [markList, setMarkList] = useState<Array<MarkItemType>>([]);
     const getRecordList = useCallback((data = {}) => {
-        Message.templateList({
+        Template.templateList({
             current,
             pageSize: 20,
             ...data
