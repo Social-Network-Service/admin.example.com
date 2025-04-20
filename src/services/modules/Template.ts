@@ -21,18 +21,8 @@ export class Template {
         return params
     }
 
-    @Get({url: '/mock/template_enable.json', loading: true, successNotice: true, errorNotice: true})
-    static async templateEnable(params: any) {
-        return params
-    }
-
-    @Get({
-        url: '/mock/template_disable.json',
-        loading: true,
-        successNotice: true,
-        errorNotice: true,
-    })
-    static async templateDisable(params: any) {
+    @Get({url: '/mock/template_change_status.json', loading: true, successNotice: true, errorNotice: true})
+    static async templateChangeStatus(params: any) {
         return params
     }
 }

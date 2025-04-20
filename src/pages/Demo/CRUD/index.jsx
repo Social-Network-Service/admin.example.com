@@ -3,12 +3,12 @@ import {Button, Typography} from 'antd'
 import {ProTable} from '@ant-design/pro-components'
 
 import {ActionType, createActionFun} from '@/utils/action'
-import usePopup from '@/hooks/usePopup'
+import {usePopup} from '@/hooks'
 import {PRO_TABLE_DEFAULT_PROPS} from '@/constants'
 import {Mark, Template} from "@/services";
 
 import {getColumns, getColumnsWidth} from './table'
-import CreateModal from './Create'
+import Create from './Create'
 import './index.scss'
 
 const {Text} = Typography
@@ -27,6 +27,16 @@ export default () => {
     async [ActionType.DELETE](data) {
       actionRef.current.reload()
     },
+    [ActionType.UPDATE](data) {
+      setCurrentRow(data)
+      show()
+    },
+    [ActionType.ENABLE](data) {
+
+    },
+    [ActionType.DISABLE](data) {
+
+    },
   })
   const columns = getColumns({onAction})
   const scrollX = getColumnsWidth(columns)
@@ -35,6 +45,7 @@ export default () => {
     const {success, data, total_num: total} = result
 
     setTotal(total)
+
     return {
       data,
       success,
@@ -59,7 +70,7 @@ export default () => {
         tableClassName={'image-table'}
       ></ProTable>
 
-      <CreateModal
+      <Create
         visible={visible}
         setVisible={setVisible}
         title={`上传图片`}
