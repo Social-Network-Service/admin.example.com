@@ -59,10 +59,6 @@ export default (props) => {
         navigate(`${key}`);
     };
 
-    if (!userInfo || !userMenus) {
-        return <Outlet/>;
-    }
-
     const routes = loopMenuItem(userMenus);
     const menus = {
         path: '/',
