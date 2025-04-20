@@ -9,7 +9,7 @@ export function authenticateSuccess (token) {
 }
 
 export function logout () {
-  _setCookie(LOGIN_COOKIE_NAME, '', 0)
+  _setCookie(LOGIN_COOKIE_NAME, '', 60*60)
 }
 
 function _getCookie (name) {
