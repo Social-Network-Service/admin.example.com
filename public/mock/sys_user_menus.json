@@ -78,7 +78,7 @@
         },
         {
           "name": "数据录入",
-          "path": "/AntDesign/Data",
+          "path": "/AntDesign/DataEntry",
           "routes": [
             {
               "name": "表单(Form)",
@@ -104,7 +104,7 @@
         },
         {
           "name": "数据展示",
-          "path": "/AntDesign/Data",
+          "path": "/AntDesign/DataDisplay",
           "routes": [
             {
               "name": "表格(Table)",
