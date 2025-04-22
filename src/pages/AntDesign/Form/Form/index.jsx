@@ -13,6 +13,20 @@ export default () => {
     const source2 = `
   <ol>
     <li>Form 组件设置 layout，可以对表单进行布局设置，支持 horizontal | vertical | inline。</li>
+    <li>调用 form.scrollToField  可以滚动到对应字段位置。
+        <pre>
+            <code>
+                const { errorFields: [firstField], } = error;
+                    if (firstField) {
+                      const field_name = firstField.name[0];
+                      form.scrollToField(field_name, {
+                        behavior: 'smooth',
+                        block: 'center',
+                      });
+                    }
+            </code>
+        </pre>
+    </li>
   </ol>
   `
 
