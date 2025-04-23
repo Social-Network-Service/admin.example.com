@@ -33,6 +33,7 @@ const components = {
     '/AntDesign/Grid': wrapComponent(lazy(() => import('@/pages/AntDesign/Layout/Grid/index'))),
     '/AntDesign/Space': wrapComponent(lazy(() => import('@/pages/AntDesign/Layout/Space/index'))),
     '/AntDesign/Form': wrapComponent(lazy(() => import('@/pages/AntDesign/DataEntry/Form/index'))),
+    '/AntDesign/FormItem': wrapComponent(lazy(() => import('@/pages/AntDesign/DataEntry/FormItem/index'))),
     '/AntDesign/Select': wrapComponent(lazy(() => import('@/pages/AntDesign/DataEntry/Select/index'))),
     '/AntDesign/Checkbox': wrapComponent(lazy(() => import('@/pages/AntDesign/DataEntry/Checkbox/index'))),
     '/AntDesign/Input': wrapComponent(lazy(() => import('@/pages/AntDesign/DataEntry/Input/index'))),

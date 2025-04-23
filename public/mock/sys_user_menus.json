@@ -85,6 +85,10 @@
               "path": "/AntDesign/Form"
             },
             {
+              "name": "表单项(FormItem)",
+              "path": "/AntDesign/FormItem"
+            },
+            {
               "name": "输入框(Input)",
               "path": "/AntDesign/Input"
             },
