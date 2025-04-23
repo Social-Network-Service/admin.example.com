@@ -67,6 +67,10 @@
           "path": "/AntDesign/Layout",
           "routes": [
             {
+              "name": "弹性布局(Flex)",
+              "path": "/AntDesign/Flex"
+            },
+            {
               "name": "栅格(Row/Col)",
               "path": "/AntDesign/Grid"
             },

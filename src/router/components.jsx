@@ -30,6 +30,7 @@ const components = {
     '/SACP/Mark/QualityInspection': wrapComponent(lazy(() => import('@/pages/SACP/Mark/QualityInspection/index'))),
     '/SACP/Mark/MarkRecord': wrapComponent(lazy(() => import('@/pages/SACP/Mark/MarkRecord/index'))),
 
+    '/AntDesign/Flex': wrapComponent(lazy(() => import('@/pages/AntDesign/Layout/Flex/index'))),
     '/AntDesign/Grid': wrapComponent(lazy(() => import('@/pages/AntDesign/Layout/Grid/index'))),
     '/AntDesign/Space': wrapComponent(lazy(() => import('@/pages/AntDesign/Layout/Space/index'))),
     '/AntDesign/Form': wrapComponent(lazy(() => import('@/pages/AntDesign/DataEntry/Form/index'))),
