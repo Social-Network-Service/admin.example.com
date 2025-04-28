@@ -1,0 +1,28 @@
+.logoContainer {
+  text-align: center;
+}
+
+.img {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.name {
+  vertical-align: middle;
+  font-weight: 400;
+  font-size: 26px;
+  color: rgba(156, 52, 41, 1);
+  font-style: normal;
+  letter-spacing: 0px;
+  line-height: 42px;
+  text-decoration: none;
+
+
+  &.black {
+    color: rgba(22, 23, 22, 1);
+  }
+}
+

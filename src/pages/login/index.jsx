@@ -4,8 +4,9 @@ import {message, Spin} from 'antd'
 
 import Logo from './logo'
 import PasswordLogin from './passwordLogin'
-import styles from './index.cjs'
 import {authenticateSuccess} from "@/utils";
+
+import './index.scss'
 
 const Login = () => {
   const [loading, setLoading] = useState(false)
@@ -26,13 +27,13 @@ const Login = () => {
   }
 
   return (
-    <div className={`${styles.loginContainer} un-select`}>
-      <div className={`${styles.body} ${styles.fixWidth}`}>
-        <div className={styles.top}>
-          <Logo className={styles.logos}/>
-          <div className={styles.desc}>开箱即用得中后台模板</div>
+    <div className={`loginContainer`}>
+      <div className={`body`}>
+        <div className={'top'}>
+          <Logo className={'logos'}/>
+          <div className={'desc'}>开箱即用的中后台模板</div>
         </div>
-        <div className={styles.main}>
+        <div className={'main'}>
           <Spin spinning={loading} tip={'登陆中'}>
             <PasswordLogin
               loginStart={loginStart}
@@ -41,8 +42,8 @@ const Login = () => {
             />
           </Spin>
         </div>
-        <div className={styles.footer}>
-          <div className={styles.desc}/>
+        <div className={'footer'}>
+          <div className={'desc'}/>
         </div>
       </div>
     </div>

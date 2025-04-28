@@ -1,16 +1,16 @@
 import React from 'react'
-import styles from './logo.cjs.js'
+import './logo.scss'
 
 const Logo = () => {
-    return (
-        <div className={styles.logoContainer}>
-            <img className={styles.img} src={'/images/ant.svg'} alt='logo'/>
-            <span className={`${styles.name}`}>A</span>
-            <span className={`${styles.name} name2`}>nt </span>
-            <span className={`${styles.name}`}>D</span>
-            <span className={`${styles.name} name2`}>esign</span>
-        </div>
-    )
+  return (
+    <div className={'logoContainer'}>
+      <img className={'img'} src={'/images/ant.svg'} alt='logo'/>
+      <span className={`name`}>A</span>
+      <span className={`name black`}>nt </span>
+      <span className={`name`}>D</span>
+      <span className={`name black`}>esign</span>
+    </div>
+  )
 }
 
 export default Logo
