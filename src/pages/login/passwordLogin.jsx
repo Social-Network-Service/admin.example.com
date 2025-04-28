@@ -31,7 +31,8 @@ const PasswordLogin = (props) => {
       },
       {
         type: 'string',
-        min: 8
+        min: 6,
+        message: '密码最少6位'
       },
       {
         type: 'string',
@@ -44,7 +45,7 @@ const PasswordLogin = (props) => {
     // username: '',
     // password: '',
     username: 'admin',
-    password: 'password',
+    password: '123456',
   }
   const itemConfig = {
     colon: false,
@@ -165,7 +166,7 @@ const PasswordLogin = (props) => {
         <Button type='primary' htmlType={'submit'} className={'loginFormButton'}>登录</Button>
       </Item>
       <Item>
-        账号 ： admin ， 密码 ：password
+        账号 ： admin ， 密码 ：123456
       </Item>
     </Form>
   )

@@ -2,8 +2,8 @@ import axios from 'axios'
 import {formatTimeDfs} from 'seasun-util';
 
 export const instance = axios.create({
-    baseURL: '',
     timeout: 60 * 1000,
+    withCredentials: true,
     headers: {
         'Content-Type': 'application/json;charset=utf-8',
     },

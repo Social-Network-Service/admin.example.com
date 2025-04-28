@@ -4,7 +4,6 @@ import {message, Spin} from 'antd'
 
 import Logo from './logo'
 import PasswordLogin from './passwordLogin'
-import {authenticateSuccess} from "@/utils";
 
 import './index.scss'
 
@@ -15,8 +14,6 @@ const Login = () => {
     setLoading(true)
   }
   const loginSuccess = async () => {
-
-    authenticateSuccess(Math.random() * 1000)
 
     await message.success('登录成功', 2)
 

@@ -1,18 +1,19 @@
-import {Get} from '../decorator/http'
+import {Get, Post} from '../decorator/http'
 
 export class System {
-    @Get({url: '/mock/sys_login.json'})
-    static async login(params: any = {}) {
-        return params
-    }
+  // @Get({url: '/mock/sys_login.json'})
+  @Get({url: 'http://localhost:8081/social/sys/login'})
+  static async login(data: any) {
+    return data
+  }
 
-    @Get({url: '/mock/sys_user_info.json'})
-    static async getUserInfo(params: any = {}) {
-        return params
-    }
+  @Get({url: '/mock/sys_user_info.json'})
+  static async getUserInfo(params: any = {}) {
+    return params
+  }
 
-    @Get({url: '/mock/sys_user_menus.json'})
-    static async getUserMenus(params: any = {}) {
-        return params
-    }
+  @Get({url: '/mock/sys_user_menus.json'})
+  static async getUserMenus(params: any = {}) {
+    return params
+  }
 }
