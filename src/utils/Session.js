@@ -10,4 +10,5 @@ export function isAuthenticated() {
 
 export function logout() {
   deleteCookie(LOGIN_COOKIE_NAME)
+  window.location.href = '/';
 }

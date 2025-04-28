@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {formatTimeDfs} from 'seasun-util';
+import {logout} from "@/utils";
 
 export const instance = axios.create({
     timeout: 60 * 1000,
@@ -36,6 +37,10 @@ export async function request(options: any) {
 
         if (response.status === 200) {
             const result = response.data
+
+            if(result.code === 401) {
+                logout();
+            }
 
             if (formatResponseTime) {
                 formatTimeDfs(result)
