@@ -5,7 +5,7 @@ import {Scrollbars} from 'react-custom-scrollbars';
 import {getRouteName} from '@/router/routes';
 import './index.scss';
 
-const TagsView = () => {
+const Tags = () => {
     const [visitedViews, setVisitedViews] = useState([{
         title: '首页',
         pathname: '/dashboard',
@@ -88,4 +88,4 @@ const TagsView = () => {
     );
 };
 
-export default TagsView;
+export default Tags;

@@ -5,7 +5,7 @@ import {UserOutlined, LogoutOutlined} from '@ant-design/icons';
 import {ProLayout} from '@ant-design/pro-components';
 import {loopMenuItem} from "@/utils/menu";
 import Breadcrumb from '../Breadcrumb';
-import TagsView from '../TagsView';
+import TagBar from '../TagBar';
 import './index.scss';
 
 export default (props) => {
@@ -115,7 +115,7 @@ export default (props) => {
             )}
             collapsedButtonRender={() => null}
         >
-            <TagsView/>
+            <TagBar />
             <div className="main-container">
                 <Outlet/>
             </div>

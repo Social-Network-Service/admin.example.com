@@ -1,0 +1,15 @@
+.tags-view-container {
+  height: 34px;
+  width: 100%;
+
+  .ant-tag {
+    margin: 4px;
+    cursor: pointer;
+    display: inline-block;
+    user-select: none;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
