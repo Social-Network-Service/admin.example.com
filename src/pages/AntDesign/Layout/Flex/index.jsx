@@ -4,6 +4,7 @@ import {Button, Flex} from 'antd';
 
 export default () => {
   const content1 = `<ul>
+            <li>弹性布局：用于容器，例如管理后台圣杯界面</li>
             <li><a target="_blank" href="https://ant.design/components/flex-cn">Flex 组件文档链接</a></li>
           </ul>`
   const content2 = `<ul>

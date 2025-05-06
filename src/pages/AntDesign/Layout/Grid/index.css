@@ -1,0 +1,17 @@
+.code-block {
+    white-space: pre-wrap;   /* 保留缩进和换行，并自动换行 */
+    word-break: break-all; /* 可选：让长单词也能断行 */
+    font-family: monospace;  /* 使用等宽字体，缩进对齐 */
+    tab-size: 4;             /* 可选：设置Tab宽度 */
+}
+
+.list {
+    display: flex;
+    gap: 32px;
+}
+
+.list-item {
+    /*计算公式是： width = (100 % - (n-1) * gap) / n，这里 n = 5 （每行5个项目）*/
+    flex: 0 0 calc((100% - (4 * 32px)) / 5);
+    width: calc((100% - (4 * 32px)) / 5);
+}

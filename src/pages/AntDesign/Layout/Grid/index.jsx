@@ -1,9 +1,10 @@
 import {Row, Col, Card, Space} from 'antd';
 import {TypingCard} from '@/components'
+import './index.css'
 
 export default () => {
   const content1 = `<ul>
-            <li>适合设置元素之间的间距。</li>
+            <li>栅格布局：用于列表多项布局</li>
             <li><a target="_blank" href="https://ant-design.antgroup.com/components/grid-cn">Row Col 组件文档链接</a></li>
           </ul>`
   const content2 = `<ul>
@@ -31,51 +32,88 @@ export default () => {
     <Space direction="vertical" size="small" style={{display: 'flex'}}>
       <TypingCard title={'何时使用'} source={content1} height={'auto'}/>
       <TypingCard title={'使用总结'} source={content2} height={'auto'}/>
-      <Row gutter={16}>
-        <Col span={12}>
-          <Card title={'第一行'}>
-            1/2
-          </Card>
-        </Col>
-        <Col span={12}>
-          <Card title={'第一行'}>
-            1/2
-          </Card>
-        </Col>
-        <Col span={12}>
-          <Card title={'第一行'}>
-            1/2
-          </Card>
-        </Col>
-      </Row>
-      <Row gutter={[16, 100]}>
-        <Col span={8}>
-          <Card title={'第一行'}>1/3</Card>
-        </Col>
-        <Col span={8}>
-          <Card title={'第一行'}>1/3</Card>
-        </Col>
-        <Col span={8}>
-          <Card title={'第一行'}>1/3</Card>
-        </Col>
-        <Col span={8}>
-          <Card title={'第二行'}>1/3</Card>
-        </Col>
-      </Row>
-      <Row>
-        <Col span={6}><Card title={'第三行'}>
-          1/4
-        </Card></Col>
-        <Col span={6}><Card title={'第三行'}>
-          1/4
-        </Card></Col>
-        <Col span={6}><Card title={'第三行'}>
-          1/4
-        </Card></Col>
-        <Col span={6}><Card title={'第三行'}>
-          1/4
-        </Card></Col>
-      </Row>
+
+      <Card title={"设置5列平均分布的示例"}>
+        <pre className='code-block'>
+          <code className='code-block'>
+            .list-item &#123;
+            /*计算公式是： width = (100 % - (n-1) * gap) / n，这里 n = 5 （每行5个项目）*/
+            flex: 0 0 calc((100% - (4 * 32px)) / 5);
+            width: calc((100% - (4 * 32px)) / 5);
+            &#125;
+          </code>
+        </pre>
+        <Row className={'list'}>
+          <Col className={'list-item'}>
+            <Card>
+              1/5
+            </Card>
+          </Col>
+          <Col className={'list-item'}>
+            <Card>
+              1/5
+            </Card>
+          </Col>
+          <Col className={'list-item'}>
+            <Card>
+              1/5
+            </Card>
+          </Col>
+          <Col className={'list-item'}>
+            <Card>
+              1/5
+            </Card>
+          </Col>
+          <Col className={'list-item'}>
+            <Card>
+              1/5
+            </Card>
+          </Col>
+          <Col className={'list-item'}>
+            <Card>
+              1/5
+            </Card>
+          </Col>
+        </Row>
+      </Card>
+
+      <Card title={'基础示例'}>
+        <Row gutter={16}>
+          <Col span={12}>
+            <Card title={'第一行'}>
+              1/2
+            </Card>
+          </Col>
+          <Col span={12}>
+            <Card title={'第一行'}>
+              1/2
+            </Card>
+          </Col>
+          <Col span={12}>
+            <Card title={'第一行'}>
+              1/2
+            </Card>
+          </Col>
+        </Row>
+      </Card>
+
+      <Card title={"设置 gutter 示例"}>
+        <Row gutter={[16, 100]}>
+          <Col span={8}>
+            <Card title={'第一行'}>1/3</Card>
+          </Col>
+          <Col span={8}>
+            <Card title={'第一行'}>1/3</Card>
+          </Col>
+          <Col span={8}>
+            <Card title={'第一行'}>1/3</Card>
+          </Col>
+          <Col span={8}>
+            <Card title={'第二行'}>1/3</Card>
+          </Col>
+        </Row>
+      </Card>
+
 
     </Space>
   )
