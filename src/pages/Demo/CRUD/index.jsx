@@ -1,24 +1,21 @@
 import {useRef, useState} from "react";
 import {usePopup} from "@/hooks";
+import {PageProvider} from './PageContext'
+import Page from './Page'
+import './index.scss'
 import List from './List'
 import Create from './Create'
-import './index.scss'
 
-export default () => {
-  const actionRef = useRef(null)
-  const [currentRow, setCurrentRow] = useState(null)
-  const {visible, setVisible, show} = usePopup({visible: true})
+export const PageEvent = {
+  REFRESH_TABLE: 'refresh_table',
+  CREATE_SHOW: 'create_show',
+}
 
+export default function Index() {
   return (
-    <div className='crud-page'>
+    <PageProvider>
       <List/>
-
-      <Create
-        visible={visible}
-        setVisible={setVisible}
-        data={currentRow}
-        actionRef={actionRef}
-      />
-    </div>
+      <Create/>
+    </PageProvider>
   )
 }

@@ -1,17 +1,18 @@
 import React from 'react';
 import {useRoutes} from 'react-router-dom';
 import {generateRoutes} from "./routes";
-import {GlobalContext} from "../contexts/GlobalState";
+import {GlobalProvider} from "../contexts/GlobalContext";
 
 const Router = ({userInfo, userMenus}) => {
   console.log('--- Render Router ---')
-
   const routes = generateRoutes(userInfo, userMenus)
   const element = useRoutes(routes);
 
-  return <GlobalContext.Provider value={{name: 'chuck'}}>
-    {element}
-  </GlobalContext.Provider>;
+  return (
+    <GlobalProvider>
+      {element}
+    </GlobalProvider>
+  );
 };
 
 export default Router;

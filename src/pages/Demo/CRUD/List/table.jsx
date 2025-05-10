@@ -2,22 +2,31 @@ import {Popconfirm, Space} from 'antd';
 import {ActionType} from '@/utils/action';
 import {TABLE_COLUMN_PROPS} from "@/constants";
 import {StatusMap} from "@/maps";
+import {useRef, useState, useEffect} from 'react'
+import {useNavigate} from "react-router-dom"
+import {usePageDispatch} from "../PageContext";
+import {PageEvent} from "../index";
 
-export function getColumnsWidth(columns) {
-  return columns
-    .map((item) => {
-      if (process.env.NODE_ENV === 'development' && !item.hasOwnProperty('width')) {
-        console.warn(`注意：【${item.title}】列未设置宽度或最小宽度`)
-      }
-      return item.width || 0;
-    })
-    .reduce((a, b) => Number(a) + Number(b), 0)
-}
+export function useTable() {
+  const navigate = useNavigate();
+  const dispatch = usePageDispatch();
+  const onAction = () => {
+  }
+  const actionRef = useRef(null)
 
-export function getColumns(params) {
-  const {onAction} = params;
+  useEffect(() => {
+    const refreshListener = () => {
+      actionRef.current.reload()
+    }
 
-  return [
+    window.addEventListener(PageEvent.REFRESH_TABLE, refreshListener)
+
+    return () => {
+      window.removeEventListener(PageEvent.REFRESH_TABLE, refreshListener)
+    }
+  }, [])
+
+  const columns = [
     {
       title: '名称',
       dataIndex: 'name',
@@ -74,10 +83,16 @@ export function getColumns(params) {
           <Space>
             <a onClick={() => onAction(ActionType.STATUS, record)}>启用</a>
             <a onClick={() => onAction(ActionType.STATUS, record)}>停用</a>
-            <a onClick={() => onAction(ActionType.ANALYSIS, record)}>数据</a>
-
+            <a onClick={() => {
+              navigate('/Demo/CRUD/Analytics')
+            }}>数据</a>
             <a onClick={() => onAction(ActionType.DETAIL, record)}>查看</a>
-            <a onClick={() => onAction(ActionType.UPDATE, record)}>编辑</a>
+            <a onClick={() => {
+              dispatch({
+                type: "create_show",
+                data: record,
+              })
+            }}>编辑</a>
             <Popconfirm
               title={'确定要删除?'}
               onConfirm={() => onAction(ActionType.DELETE, record)}
@@ -97,4 +112,22 @@ export function getColumns(params) {
       },
     },
   ];
+  const scrollX = getColumnsWidth(columns)
+
+  return {
+    columns,
+    scrollX,
+    actionRef,
+  }
+}
+
+export function getColumnsWidth(columns) {
+  return columns
+    .map((item) => {
+      if (process.env.NODE_ENV === 'development' && !item.hasOwnProperty('width')) {
+        console.warn(`注意：【${item.title}】列未设置宽度或最小宽度`)
+      }
+      return item.width || 0;
+    })
+    .reduce((a, b) => Number(a) + Number(b), 0)
 }

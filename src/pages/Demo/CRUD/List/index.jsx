@@ -1,4 +1,4 @@
-import {useRef, useState} from 'react'
+import {useRef, useState, useEffect} from 'react'
 import {useNavigate} from "react-router-dom"
 import {Button, Typography} from 'antd'
 import {ProTable} from '@ant-design/pro-components'
@@ -7,36 +7,16 @@ import {ActionType, createActionFun} from '@/utils'
 import {PRO_TABLE_DEFAULT_PROPS} from '@/constants'
 import {Template} from "@/services"
 
-import {getColumns, getColumnsWidth} from './table'
+import {useTable} from './table'
+import {usePageDispatch} from "../PageContext";
 
 const {Text} = Typography
 
-export default () => {
-  const navigate = useNavigate();
-  const actionRef = useRef(null)
+export default function List() {
   const [total, setTotal] = useState(0)
+  const {actionRef, columns, scrollX} = useTable()
+  const dispatch = usePageDispatch()
 
-  const onAction = createActionFun({
-    [ActionType.CREATE]() {
-      setCurrentRow(null)
-      show()
-    },
-    async [ActionType.DELETE](data) {
-      actionRef.current.reload()
-    },
-    [ActionType.UPDATE](data) {
-      setCurrentRow(data)
-      show()
-    },
-    [ActionType.STATUS](data) {
-
-    },
-    [ActionType.ANALYSIS](data) {
-      navigate('/Demo/CRUD/Analysis')
-    },
-  })
-  const columns = getColumns({onAction})
-  const scrollX = getColumnsWidth(columns)
   const request = async (params) => {
     const result = await Template.templateList(params)
     const {success, data, total_num: total} = result
@@ -50,6 +30,7 @@ export default () => {
     }
   }
 
+
   return (
     <ProTable
       {...PRO_TABLE_DEFAULT_PROPS}
@@ -58,7 +39,11 @@ export default () => {
       columns={columns}
       request={request}
       toolBarRender={() => [
-        <Button type="primary" onClick={() => onAction(ActionType.CREATE)}>
+        <Button type="primary" onClick={() => {
+          dispatch({
+            type: 'create_show',
+          })
+        }}>
           创建
         </Button>,
       ]}
