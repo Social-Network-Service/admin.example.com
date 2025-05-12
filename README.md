@@ -81,6 +81,12 @@ npm run dev
 4. @ant-design/pro-components
 5. react-custom-scrollbars https://github.com/malte-wessel/react-custom-scrollbars?tab=readme-ov-file#react-custom-scrollbars
 
+
+## 技术点
+
+<!-- 禁用自动填充 -->
+<input type="text" autoComplete="off" />
+
 ### 参考
 
 React 管理后台项目收集：https://github.com/qq735675958/react-antd-admin 
