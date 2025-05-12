@@ -2,7 +2,7 @@ import React from 'react';
 import {Navigate} from "react-router-dom";
 import ProLayout from "@/layout/ProLayout";
 import {isAuthenticated} from "@/utils";
-import components from "./components";
+import {getElement} from "./components";
 
 export let routes = [];
 export let routeMap = new Map();
@@ -27,17 +27,9 @@ export function generateRoutes(userInfo, userMenus) {
     // 公共路由
     {
       path: '/login',
-      element: React.createElement(components['/login']),
+      element: getElement('/login'),
       meta: {
         title: '登录',
-        hideInMenu: true
-      }
-    },
-    {
-      path: '/logout',
-      element: React.createElement(components['/logout']),
-      meta: {
-        title: '注销',
         hideInMenu: true
       }
     },
@@ -45,7 +37,7 @@ export function generateRoutes(userInfo, userMenus) {
       path: '/',
       element: isAuthenticated()
         ? <ProLayout userInfo={userInfo} userMenus={userMenus}/>
-        : <Navigate to="/login" replace />,
+        : <Navigate to="/login" replace/>,
       children: [
         {
           path: '/',
@@ -54,14 +46,14 @@ export function generateRoutes(userInfo, userMenus) {
         },
         {
           path: '/dashboard',
-          element: React.createElement(components['/dashboard']),
+          element: getElement('/dashboard'),
           meta: {
             title: '首页'
           }
         },
         {
           path: '/user_center',
-          element: React.createElement(components['/user_center']),
+          element: getElement('/user_center'),
           meta: {
             title: '用户中心'
           }
@@ -71,7 +63,7 @@ export function generateRoutes(userInfo, userMenus) {
         // 404 路由放在最后
         {
           path: '*',
-          element: React.createElement(components['/404']),
+          element: getElement('/404'),
           meta: {
             title: '404',
             hideInMenu: true
@@ -102,10 +94,9 @@ export const generateRoutesFromMenus = (menus) => {
 
     // 如果有路径，创建路由配置
     if (menu.path) {
-      const element = components[menu.path]
-        ? React.createElement(components[menu.path])
-        :
-        <span>未找到路径{menu.path}对应的页面组件，请检查router/components.jsx模块是否配置了对应的组件。</span>
+      const element = getElement(menu.path) ||
+        (<span>未找到路径{menu.path}对应的页面组件，请检查router/components.jsx模块是否配置了对应的组件。</span>)
+
       return {
         path: menu.path,
         element,

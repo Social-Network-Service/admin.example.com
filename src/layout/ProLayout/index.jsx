@@ -7,6 +7,7 @@ import {loopMenuItem} from "@/utils/menu";
 import Breadcrumb from '../Breadcrumb';
 import TagBar from '../TagBar';
 import './index.scss';
+import {logout} from "@/utils";
 
 export default (props) => {
     const {userInfo, userMenus} = props
@@ -49,9 +50,9 @@ export default (props) => {
                 okText: '确定',
                 cancelText: '取消',
                 onOk: async () => {
+                    logout();
                     await message.success('退出登录成功', 2);
-                    // 这里添加您的登出逻辑
-                    navigate(`${key}`);
+                    navigate(`/`);
                 }
             })
             return;

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 import {message, Spin} from 'antd'
 
 import Logo from './logo'
@@ -10,11 +10,16 @@ import './index.scss'
 const Login = () => {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+  const location = useLocation()
   const loginStart = () => {
     setLoading(true)
   }
   const loginSuccess = async () => {
-    navigate('/')
+    // 从URL中获取重定向参数
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectPath = urlParams.get('redirect');
+    // 跳转到指定页面或首页
+    navigate(redirectPath || '/')
   }
   const loginFailed = () => {
     setLoading(false)

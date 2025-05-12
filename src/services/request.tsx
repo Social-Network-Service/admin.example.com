@@ -2,7 +2,6 @@ import axios from 'axios';
 import {message} from 'antd';
 import {HttpStatus, CodeEnum} from '@/enums';
 import {SvgIcon} from '@/components';
-import {logout} from "@/utils";
 import {formatTimeDfs} from 'seasun-util';
 
 class LoadingCounter {
@@ -75,7 +74,10 @@ export async function request(options: any) {
       const result = response.data;
 
       if (result.code === 401) {
-        logout();
+        // 获取当前路径
+        const currentPath = window.location.pathname;
+        // 直接跳转到登录页面并携带当前路径
+        window.location.href = `/login?redirect=${encodeURIComponent(currentPath)}`;
       }
 
       if (formatResponseTime) {
