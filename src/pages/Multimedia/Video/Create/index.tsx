@@ -31,9 +31,9 @@ export default ({title, visible, setVisible, data, actionRef}: PopupProps) => {
         formData.sortOrder = 1;
 
         if (data?.videoId) {
-            await Video.updateVideo(data.videoId, formData)
+            await Video.update(data.videoId, formData)
         } else {
-            await Video.insertVideo(formData)
+            await Video.create(formData)
         }
 
         // @ts-ignore

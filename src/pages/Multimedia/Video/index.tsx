@@ -27,7 +27,7 @@ export default () => {
             show()
         },
         async [ActionType.DELETE](data: any) {
-            await Video.deleteVideo(data.videoId);
+            await Video.delete(data.videoId);
             actionRef.current.reload()
         },
     })

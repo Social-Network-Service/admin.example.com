@@ -1,8 +1,7 @@
 import {Get, Post} from '../decorator/http'
 
 export class System {
-  // @Get({url: '/mock/sys_login.json'})
-  @Get({url: 'http://localhost:8081/social/sys/login'})
+  @Post({url: 'http://localhost:8081/social/sys/login', errorNotice: true, successNotice: true})
   static async login(data: any) {
     return data
   }

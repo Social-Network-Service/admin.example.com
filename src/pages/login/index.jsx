@@ -14,9 +14,6 @@ const Login = () => {
     setLoading(true)
   }
   const loginSuccess = async () => {
-
-    await message.success('登录成功', 2)
-
     navigate('/')
   }
   const loginFailed = () => {
