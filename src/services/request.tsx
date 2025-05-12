@@ -3,6 +3,7 @@ import {message} from 'antd';
 import {HttpStatus, CodeEnum} from '@/enums';
 import {SvgIcon} from '@/components';
 import {logout} from "@/utils";
+import {formatTimeDfs} from 'seasun-util';
 
 class LoadingCounter {
   private static count = 0;
@@ -55,6 +56,7 @@ export async function request(options: any) {
     errorNotice = false,
     responseAfterCallback,
     getResponse = false,
+    formatResponseTime = false,
     ...config
   } = options;
 
@@ -74,6 +76,10 @@ export async function request(options: any) {
 
       if (result.code === 401) {
         logout();
+      }
+
+      if (formatResponseTime) {
+        formatTimeDfs(result)
       }
 
       if (
