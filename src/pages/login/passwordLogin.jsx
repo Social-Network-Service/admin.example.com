@@ -149,12 +149,11 @@ const PasswordLogin = (props) => {
         <Input
           maxLength={16}
           prefix={<LockOutlined/>}
-          type='password'
           placeholder='请输入密码'
           onPressEnter={handleLogin}
-          // autoComplete='off'
-          // 敏感字段禁用自动填充
-          autoComplete='new-passowrd'
+          type='password'
+          // 禁用 input 自动填充
+          autoComplete='off'
         />
       </Item>
       <Item>
