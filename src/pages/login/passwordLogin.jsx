@@ -152,6 +152,9 @@ const PasswordLogin = (props) => {
           type='password'
           placeholder='请输入密码'
           onPressEnter={handleLogin}
+          // autoComplete='off'
+          // 敏感字段禁用自动填充
+          autoComplete='new-passowrd'
         />
       </Item>
       <Item>
