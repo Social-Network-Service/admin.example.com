@@ -6,11 +6,13 @@ import Logo from './logo'
 import PasswordLogin from './passwordLogin'
 
 import './index.scss'
+import {useGlobal} from "@/contexts/GlobalContext";
+import {System} from "services/modules/System";
 
 const Login = () => {
+  const {setIsLogin, setUserInfo, setUserMenus} = useGlobal();
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const location = useLocation()
   const loginStart = () => {
     setLoading(true)
   }

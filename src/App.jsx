@@ -1,17 +1,19 @@
 import React from 'react';
 import {BrowserRouter,} from 'react-router-dom';
 import {ConfigProvider} from 'antd';
-import Router from '@/router'
+import {GlobalProvider} from "@/contexts/GlobalContext";
 import "./App.scss"
+import Router from "@/router";
 
-export default ({userInfo, userMenus}) => {
-  console.log({userInfo, userMenus})
+export default () => {
   console.log('--- Render App ---')
   return (
-    <ConfigProvider theme={{token: {colorPrimary: '#1890ff'}}}>
-      <BrowserRouter>
-        <Router userInfo={userInfo} userMenus={userMenus}/>
-      </BrowserRouter>
-    </ConfigProvider>
+    <GlobalProvider>
+      <ConfigProvider theme={{token: {colorPrimary: '#1890ff'}}}>
+        <BrowserRouter>
+          <Router/>
+        </BrowserRouter>
+      </ConfigProvider>
+    </GlobalProvider>
   );
 }

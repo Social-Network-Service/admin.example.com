@@ -20,6 +20,7 @@ export const buildRouteList = (routes) => {
 };
 
 export function generateRoutes(userInfo, userMenus) {
+  console.log({userInfo, userMenus})
   // 生成动态路由配置
   const dynamicRoutes = generateRoutesFromMenus(userMenus);
 
