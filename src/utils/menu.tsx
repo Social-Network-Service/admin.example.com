@@ -25,7 +25,6 @@ export const loopMenuItem = (menus: any[]): any[] => {
     if (!menus) return [];
 
     return menus.map(({icon, routes, ...item}) => ({
-        // 确保关键属性存在
         name: item.name,
         path: item.path,
         icon: getIcon(icon),

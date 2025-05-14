@@ -26,9 +26,9 @@ export default () => {
         <div>Should error</div>
       </Module>
 
-      <Module>
+      {/*<Module>
         Should
-      </Module>
+      </Module>*/}
     </div>
   )
 }

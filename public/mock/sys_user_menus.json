@@ -3,7 +3,6 @@
   "data": [
     {
       "id": 200,
-      "key": "SACP",
       "name": "SACP",
       "path": "/SACP",
       "icon": "FireOutlined",
@@ -57,7 +56,6 @@
     },
     {
       "id": 300,
-      "key": "AntDesign",
       "name": "AntDesign",
       "path": "/AntDesign",
       "icon": "SmileOutlined",
@@ -148,7 +146,6 @@
     },
     {
       "id": 350,
-      "key": "AntDesign Pro",
       "name": "AntDesignPro",
       "path": "/AntDesignPro",
       "icon": "OpenAIOutlined",
@@ -187,7 +184,6 @@
     },
     {
       "id": 500,
-      "key": "Test",
       "name": "测试",
       "path": "/Test",
       "icon": "TransactionOutlined",
@@ -206,7 +202,6 @@
     },
     {
       "id": 600,
-      "key": "multimedia",
       "name": "多媒体",
       "path": "/Multimedia",
       "icon": "MediumOutlined",
@@ -235,7 +230,6 @@
     },
     {
       "id": 700,
-      "key": "component",
       "name": "自定义组件",
       "path": "/component",
       "icon": "LikeOutlined",
@@ -260,7 +254,7 @@
     {
       "id": 100,
       "name": "系统配置",
-      "path": "System",
+      "path": "/System",
       "icon": "SettingOutlined",
       "routes": [
         {

@@ -17,7 +17,7 @@ const wrapComponent = (LazyComponent) => {
 };
 
 // 懒加载组件
-const components = {
+export const components = {
   '/login': wrapComponent(lazy(() => import('@/pages/login/index'))),
   '/dashboard': wrapComponent(lazy(() => import('@/pages/dashboard/index'))),
   '/user_center': wrapComponent(lazy(() => import('@/pages/user_center/index'))),
@@ -66,14 +66,24 @@ const components = {
   '/system/permission': wrapComponent(lazy(() => import('@/pages/system/permission/index'))),
 }
 
-// 把【组件】转换成【元素】 TestComponent -> <TestComponent/>
-export function getElement(key) {
-  if (components[key]) {
-    return React.createElement(components[key]);
+export function getComponent(key) {
+  const Component = components[key]
+  if (Component) {
+    return Component;
   } else {
-    console.warn(`Components not found, key=${key}`);
+    console.warn(`Component not found, key=${key}`);
     return null;
   }
 }
 
-export default components
+// 把【组件】转换成【元素】 TodoList -> <TodoList/>
+export function getElement(key) {
+  const Component = getComponent(key)
+  if (Component) {
+    // 下面两种写法等价
+    // return React.createElement(Component);
+    return <Component/>;
+  } else {
+    return null;
+  }
+}

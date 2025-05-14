@@ -7,20 +7,15 @@ export function useGlobal() {
 }
 
 export function GlobalProvider({children}) {
-  const [isLogin, setIsLogin] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
   const [userMenus, setUserMenus] = useState(null);
 
-  const state = useMemo(() => {
-    return {
-      isLogin,
-      setIsLogin,
-      userInfo,
-      setUserInfo,
-      userMenus,
-      setUserMenus,
-    }
-  }, [])
+  const state = {
+    userInfo,
+    setUserInfo,
+    userMenus,
+    setUserMenus,
+  }
 
   return (
     <GlobalContext.Provider value={state}>
