@@ -40,3 +40,8 @@ const formItemList = formItems.map((formItem, index) => {
 ## 表单预览器
 
 preview.html
+
+
+### 参考文献
+
+[form-generator](https://github.com/JakHuang/form-generator)]

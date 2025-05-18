@@ -1,4 +1,4 @@
-export default ({headerRender, leftRender, centerRender, rightRender}) => {
+export default function Layout({headerRender, leftRender, centerRender, rightRender}) {
   return (
     <section className="layout">
       {

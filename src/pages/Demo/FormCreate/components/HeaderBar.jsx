@@ -1,6 +1,6 @@
 import {useState, useContext} from "react";
 import {Tabs, Form, Button, Input, Radio, Modal} from 'antd';
-import {GlobalDataContext} from "../contexts/GlobalDataContext";
+import {PageContext} from "../contexts/PageContext";
 import {parse} from '@babel/parser'
 import Clipboard from 'clipboard'
 import {saveAs} from 'file-saver'
@@ -46,8 +46,8 @@ async function copyTextWithPermission(text) {
   }
 }
 
-export default () => {
-  const {state: {formConfig, formItemConfig}} = useContext(GlobalDataContext);
+export default function HeaderBar() {
+  const {state: {formConfig, formItemConfig}} = useContext(PageContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);

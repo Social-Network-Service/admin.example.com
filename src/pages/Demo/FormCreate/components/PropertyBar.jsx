@@ -1,8 +1,8 @@
-import {useState, useContext, useMemo, useEffect} from "react";
-import {Tabs, Form, Button, Input, Radio} from 'antd';
-import {GlobalDataContext} from "../contexts/GlobalDataContext";
+import { useState, useContext, useMemo, useEffect } from "react";
+import { Tabs, Form, Button, Input, Radio } from 'antd';
+import { usePage } from "../contexts/PageContext";
 
-export default () => {
+export default function PropertyBar() {
     const [form] = Form.useForm();
     const {
         state: {
@@ -12,7 +12,7 @@ export default () => {
         },
         setFormConfig,
         setComponentProperty,
-    } = useContext(GlobalDataContext)
+    } = usePage()
 
     const selectedFormItem = useMemo(() => {
         return selectIndex !== null ? formItemConfig[selectIndex] : null;
@@ -35,24 +35,24 @@ export default () => {
         >
             <Form.Item label="字段名称" name="label">
                 <Input placeholder="请输入"
-                       onChange={(event) => {
-                           console.log('onChange', event.target.value)
-                           setComponentProperty('label', event.target.value)
-                       }}
-                       onInput={(event) => {
-                           console.log('onInput', event.target.value)
-                       }}
+                    onChange={(event) => {
+                        //    console.log('onChange', event.target.value)
+                        setComponentProperty('label', event.target.value)
+                    }}
+                    onInput={(event) => {
+                        //    console.log('onInput', event.target.value)
+                    }}
                 />
             </Form.Item>
             <Form.Item label="字段标识" name="name">
                 <Input placeholder="请输入"
-                       onChange={(event) => {
-                           setComponentProperty('name', event.target.value)
-                       }}
+                    onChange={(event) => {
+                        setComponentProperty('name', event.target.value)
+                    }}
                 />
             </Form.Item>
         </Form>)
-        : <span style={{color: 'rgba(150,150,150,0.5)'}}>请选择表单项</span>
+        : <span style={{ color: 'rgba(150,150,150,0.5)' }}>请选择表单项</span>
 
     const items = [
         {
@@ -101,10 +101,10 @@ export default () => {
         },
     ];
     const onChange = (key) => {
-        console.log(key);
+        // console.log(key);
     };
 
     return (
-        <Tabs defaultActiveKey="1" items={items} onChange={onChange}/>
+        <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
     )
 }

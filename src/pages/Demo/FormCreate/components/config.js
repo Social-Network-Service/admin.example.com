@@ -36,6 +36,10 @@ export const inputComponents = [
       prepend: '',
       append: ''
     },
+    props:{
+      name:"",
+      type:"text",
+    },
     // 其余的为可直接写在组件标签上的属性
     placeholder: '请输入',
     style: {width: '100%'},
