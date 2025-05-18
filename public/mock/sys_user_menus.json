@@ -164,14 +164,6 @@
       "icon": "StarOutlined",
       "routes": [
         {
-          "name": "音频可视化",
-          "path": "/Demo/AudioVisualization"
-        },
-        {
-          "name": "表单创建",
-          "path": "/Demo/FormCreate"
-        },
-        {
           "name": "CRUD",
           "path": "/Demo/CRUD"
         },
@@ -179,6 +171,10 @@
           "name": "CRUD数据",
           "path": "/Demo/CRUD/Analysis",
           "hideInMenu": true
+        },
+        {
+          "name": "表单创建",
+          "path": "/Demo/FormCreate"
         }
       ]
     },
