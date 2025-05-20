@@ -51,10 +51,4 @@ export const layoutComponents = [
       tag: 'row',
     }
   },
-  {
-    __config__: {
-      label: '按钮',
-      tag: 'el-button',
-    }
-  }
 ]

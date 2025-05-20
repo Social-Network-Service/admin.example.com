@@ -36,27 +36,27 @@ export const initialState = {
 // Action创建函数
 export const createSetFormConfigAction = (data) => ({
   type: ActionTypes.SET_FORM_CONFIG,
-  payload: data
+  data: data
 });
 
 export const createAddFormItemAction = (component) => ({
   type: ActionTypes.ADD_FORM_ITEM,
-  payload: component
+  data: component
 });
 
 export const createDeleteFormItemAction = (index) => ({
   type: ActionTypes.DELETE_FORM_ITEM,
-  payload: index
+  data: index
 });
 
 export const createSetSelectIndexAction = (index) => ({
   type: ActionTypes.SET_SELECT_INDEX,
-  payload: index
+  data: index
 });
 
 export const createSetComponentPropertyAction = (name, value) => ({
   type: ActionTypes.SET_COMPONENT_PROPERTY,
-  payload: { name, value }
+  data: {name, value}
 });
 
 // Reducer函数 - 使用Immer的可变更新风格
@@ -64,29 +64,26 @@ export function formReducer(state, action) {
   switch (action.type) {
     case ActionTypes.SET_FORM_CONFIG:
       // 直接修改draft
-      Object.assign(state.formConfig, action.payload);
+      Object.assign(state.formConfig, action.data);
       break;
 
     case ActionTypes.ADD_FORM_ITEM: {
-      const component = action.payload;
+      const component = action.data;
       const newItem = {
         tag: component.__config__.tag,
         name: `field_${state.formItemConfig.length + 1}`,
         label: `字段${state.formItemConfig.length + 1}`,
       };
-      
-      // 直接push到数组中
+
       state.formItemConfig.push(newItem);
       break;
     }
 
     case ActionTypes.DELETE_FORM_ITEM: {
-      const index = action.payload;
-      
-      // 直接修改数组
+      const index = action.data;
+
       state.formItemConfig.splice(index, 1);
-      
-      // 更新选中索引
+
       if (state.selectIndex === index) {
         state.selectIndex = null;
       } else if (state.selectIndex > index) {
@@ -96,20 +93,18 @@ export function formReducer(state, action) {
     }
 
     case ActionTypes.SET_SELECT_INDEX:
-      // 直接设置值
-      state.selectIndex = action.payload;
+      state.selectIndex = action.data;
       break;
 
     case ActionTypes.SET_COMPONENT_PROPERTY: {
-      const { name, value } = action.payload;
-      const { selectIndex } = state;
-      
+      const {name, value} = action.data;
+      const {selectIndex} = state;
+
       // 确保有选中的索引
       if (selectIndex === null || selectIndex < 0 || selectIndex >= state.formItemConfig.length) {
-        return; // 不做任何更改
+        return;
       }
-      
-      // 直接修改对象属性
+
       state.formItemConfig[selectIndex][name] = value;
       break;
     }
