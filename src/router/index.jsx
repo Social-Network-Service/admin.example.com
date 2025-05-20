@@ -38,7 +38,8 @@ export default function Router() {
       }
     } else {
       if (whiteList.indexOf(pathname) === -1) {
-        navigate(`/login?redirect=${encodeURIComponent(pathname)}`, {replace: true});
+        const search = pathname !== '/' ? `?redirect=${encodeURIComponent(pathname)}` : ''
+        navigate(`/login${search}`, {replace: true});
       }
     }
   }
