@@ -6,6 +6,8 @@ import {useEffect, useState} from "react";
 import {isAuthenticated} from "@/utils";
 import {System} from "services/modules/System";
 
+const whiteList = ['/login']
+
 export default function Router() {
   console.log('--- Render Router ---')
   const {userInfo, userMenus, setUserInfo, setUserMenus} = useGlobal();
@@ -18,8 +20,8 @@ export default function Router() {
   const routeGuard = async () => {
     const hasToken = isAuthenticated();
     if (hasToken) {
-      if (pathname == '/login') {
-        navigate('/')
+      if (pathname === '/login') {
+        navigate("/");
       } else {
         if (!userInfo || !userMenus) {
           async function fetchData() {
@@ -36,7 +38,9 @@ export default function Router() {
         }
       }
     } else {
-      navigate('/login', {replace: true})
+      if (whiteList.indexOf(pathname) === -1) {
+        navigate(`/login?redirect=${encodeURIComponent(pathname)}`, {replace: true});
+      }
     }
   }
 
