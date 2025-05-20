@@ -6,7 +6,9 @@ import {PageContext} from "../contexts/PageContext";
 
 export default function FormBar() {
   const {
-    state: {formConfig, formItemConfig, selectIndex},
+    formConfig,
+    formItemConfig,
+    selectIndex,
     deleteFormItem,
     setSelectIndex
   } = useContext(PageContext)

@@ -70,7 +70,7 @@ export function getComponent(key) {
   if (Component) {
     return Component;
   } else {
-    console.warn(`Component not found, key=${key}`);
+    // console.warn(`Component not found, key=${key}`);
     return null;
   }
 }

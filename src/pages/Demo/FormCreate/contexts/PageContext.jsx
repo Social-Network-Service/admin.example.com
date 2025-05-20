@@ -1,4 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, {useReducer, useContext, useCallback} from "react";
+import {
+  formReducer,
+  initialState,
+  setFormConfig,
+  addFormItem,
+  deleteFormItem,
+  setSelectIndex,
+  setComponentProperty
+} from "./reducer";
 
 export const PageContext = React.createContext(null);
 
@@ -6,94 +15,51 @@ export function usePage() {
   return useContext(PageContext);
 }
 
-export function PageProvider({ children }) {
-  const [state, setState] = useState({
-    formConfig: {
-      layout: "horizontal",
-      labelAlign: "right",
-    },
-    formItemConfig: [
-      {
-        tag: 'input',
-        name: 'field_1',
-        label: '字段1',
-      },
-      {
-        tag: 'textarea',
-        name: 'field_2',
-        label: '字段2',
-      },
-      {
-        tag: 'input_password',
-        name: 'field_3',
-        label: '字段3',
-      },
-    ],
-    selectIndex: null,
-  })
+export function PageProvider({children}) {
+  // 使用useReducer替代多个useState
+  const [state, dispatch] = useReducer(formReducer, initialState);
+  
+  // 使用useCallback包装dispatch函数，确保引用稳定性
+  const handleSetFormConfig = useCallback((data) => {
+    dispatch(setFormConfig(data));
+  }, []);
 
-  const value = {
-    state,
-    setState,
-    setFormConfig(data) {
-      setState((preState) => {
-        return {
-          ...preState,
-          formConfig: {
-            ...preState.formConfig,
-            ...data,
-          }
-        }
-      })
-    },
-    addFormItem(component) {
-      setState((preState) => {
-        const formItemConfig = {
-          tag: component.__config__.tag,
-          name: `field_${preState.formItemConfig.length + 1}`,
-          label: `字段${preState.formItemConfig.length + 1}`,
-        }
+  const handleAddFormItem = useCallback((component) => {
+    dispatch(addFormItem(component));
+  }, []);
 
-        return {
-          ...preState,
-          formItemConfig: preState.formItemConfig.concat(formItemConfig)
-        }
-      })
-    },
-    deleteFormItem(index) {
-      setState(preState => {
-        preState.formItemConfig.splice(index, 1);
+  const handleDeleteFormItem = useCallback((index) => {
+    dispatch(deleteFormItem(index));
+  }, []);
 
-        return {
-          ...preState,
-        }
-      })
-    },
-    setSelectIndex(index) {
-      setState(preState => {
-        return {
-          ...preState,
-          selectIndex: index,
-        }
-      })
-    },
-    setComponentProperty(name, value) {
-      setState(preState => {
-        // console.log({name, value});
-        const { formItemConfig, selectIndex } = preState;
-        const itemConfig = formItemConfig[selectIndex];
-        itemConfig[name] = value;
-        return {
-          ...preState,
-          formItemConfig,
-        }
-      })
-    }
-  }
+  const handleSetSelectIndex = useCallback((index) => {
+    dispatch(setSelectIndex(index));
+  }, []);
+
+  const handleSetComponentProperty = useCallback((name, value) => {
+    dispatch(setComponentProperty(name, value));
+  }, []);
+
+  // 解构状态，便于使用
+  const {formConfig, formItemConfig, selectIndex} = state;
+
+  // 将所有状态和方法组织到一个对象中
+  const contextValue = {
+    // 状态
+    formConfig,
+    formItemConfig,
+    selectIndex,
+    // 方法
+    setFormConfig: handleSetFormConfig,
+    addFormItem: handleAddFormItem,
+    deleteFormItem: handleDeleteFormItem,
+    setSelectIndex: handleSetSelectIndex,
+    setComponentProperty: handleSetComponentProperty
+  };
 
   return (
-    <PageContext.Provider value={value}>
+    <PageContext.Provider value={contextValue}>
       {children}
     </PageContext.Provider>
-  )
+  );
 }

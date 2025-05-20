@@ -5,13 +5,11 @@ import { usePage } from "../contexts/PageContext";
 export default function PropertyBar() {
     const [form] = Form.useForm();
     const {
-        state: {
-            formConfig,
-            formItemConfig,
-            selectIndex
-        },
+        formConfig,
+        formItemConfig,
+        selectIndex,
         setFormConfig,
-        setComponentProperty,
+        setComponentProperty
     } = usePage()
 
     const selectedFormItem = useMemo(() => {

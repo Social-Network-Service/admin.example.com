@@ -1,13 +1,11 @@
-import {useContext} from "react";
 import {Tag} from 'antd'
 import {
-  inputComponents, selectComponents, layoutComponents, formConf
+  inputComponents, selectComponents, layoutComponents
 } from './config'
-import {PageContext} from "../contexts/PageContext";
-import {SvgIcon} from "@/components";
+import {usePage} from "../contexts/PageContext";
 
 export default function ComponentBar() {
-  const {addFormItem} = useContext(PageContext)
+  const {addFormItem} = usePage()
   const leftComponents = [
     {
       title: '输入型组件',
@@ -25,8 +23,6 @@ export default function ComponentBar() {
 
   return (
     <div className="component-bar">
-      <SvgIcon name={'404'}></SvgIcon>
-      <SvgIcon name={'baidu'}></SvgIcon>
       <div className="component-group">
         {
           leftComponents.map((componentGroup, index) => {

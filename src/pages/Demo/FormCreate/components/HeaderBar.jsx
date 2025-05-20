@@ -1,6 +1,6 @@
 import {useState, useContext} from "react";
-import {Tabs, Form, Button, Input, Radio, Modal} from 'antd';
-import {PageContext} from "../contexts/PageContext";
+import {Tabs, Form, Button, Input, Radio, Modal, message} from 'antd';
+import {PageContext, usePage} from "../contexts/PageContext";
 import {parse} from '@babel/parser'
 import Clipboard from 'clipboard'
 import {saveAs} from 'file-saver'
@@ -47,7 +47,7 @@ async function copyTextWithPermission(text) {
 }
 
 export default function HeaderBar() {
-  const {state: {formConfig, formItemConfig}} = useContext(PageContext);
+  const {formConfig, formItemConfig} = usePage()
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -95,6 +95,12 @@ export default function HeaderBar() {
                 }
               }}>
         导出jsx文件
+      </Button>
+
+      <Button size='small' type='primary' onClick={() => {
+        message.info('待实现！')
+      }}>
+        预览
       </Button>
 
       <Modal title="JSON内容" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
