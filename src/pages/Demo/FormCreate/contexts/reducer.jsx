@@ -34,27 +34,27 @@ export const initialState = {
 };
 
 // Action创建函数
-export const setFormConfig = (data) => ({
+export const createSetFormConfigAction = (data) => ({
   type: ActionTypes.SET_FORM_CONFIG,
   payload: data
 });
 
-export const addFormItem = (component) => ({
+export const createAddFormItemAction = (component) => ({
   type: ActionTypes.ADD_FORM_ITEM,
   payload: component
 });
 
-export const deleteFormItem = (index) => ({
+export const createDeleteFormItemAction = (index) => ({
   type: ActionTypes.DELETE_FORM_ITEM,
   payload: index
 });
 
-export const setSelectIndex = (index) => ({
+export const createSetSelectIndexAction = (index) => ({
   type: ActionTypes.SET_SELECT_INDEX,
   payload: index
 });
 
-export const setComponentProperty = (name, value) => ({
+export const createSetComponentPropertyAction = (name, value) => ({
   type: ActionTypes.SET_COMPONENT_PROPERTY,
   payload: { name, value }
 });

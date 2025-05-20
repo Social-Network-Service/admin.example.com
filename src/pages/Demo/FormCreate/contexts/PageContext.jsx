@@ -2,11 +2,11 @@ import React, {useReducer, useContext, useCallback} from "react";
 import {
   formReducer,
   initialState,
-  setFormConfig,
-  addFormItem,
-  deleteFormItem,
-  setSelectIndex,
-  setComponentProperty
+  createSetFormConfigAction,
+  createAddFormItemAction,
+  createDeleteFormItemAction,
+  createSetSelectIndexAction,
+  createSetComponentPropertyAction
 } from "./reducer";
 
 export const PageContext = React.createContext(null);
@@ -20,24 +20,24 @@ export function PageProvider({children}) {
   const [state, dispatch] = useReducer(formReducer, initialState);
   
   // 使用useCallback包装dispatch函数，确保引用稳定性
-  const handleSetFormConfig = useCallback((data) => {
-    dispatch(setFormConfig(data));
+  const setFormConfig = useCallback((data) => {
+    dispatch(createSetFormConfigAction(data));
   }, []);
 
-  const handleAddFormItem = useCallback((component) => {
-    dispatch(addFormItem(component));
+  const addFormItem = useCallback((component) => {
+    dispatch(createAddFormItemAction(component));
   }, []);
 
-  const handleDeleteFormItem = useCallback((index) => {
-    dispatch(deleteFormItem(index));
+  const deleteFormItem = useCallback((index) => {
+    dispatch(createDeleteFormItemAction(index));
   }, []);
 
-  const handleSetSelectIndex = useCallback((index) => {
-    dispatch(setSelectIndex(index));
+  const setSelectIndex = useCallback((index) => {
+    dispatch(createSetSelectIndexAction(index));
   }, []);
 
-  const handleSetComponentProperty = useCallback((name, value) => {
-    dispatch(setComponentProperty(name, value));
+  const setComponentProperty = useCallback((name, value) => {
+    dispatch(createSetComponentPropertyAction(name, value));
   }, []);
 
   // 解构状态，便于使用
@@ -50,11 +50,11 @@ export function PageProvider({children}) {
     formItemConfig,
     selectIndex,
     // 方法
-    setFormConfig: handleSetFormConfig,
-    addFormItem: handleAddFormItem,
-    deleteFormItem: handleDeleteFormItem,
-    setSelectIndex: handleSetSelectIndex,
-    setComponentProperty: handleSetComponentProperty
+    setFormConfig,
+    addFormItem,
+    deleteFormItem,
+    setSelectIndex,
+    setComponentProperty
   };
 
   return (

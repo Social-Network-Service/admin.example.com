@@ -1,8 +1,6 @@
-import {useState, useMemo, useEffect, useContext} from 'react';
-import {Form, Input} from "antd";
 import {ProForm, ProFormText, ProFormTextArea} from "@ant-design/pro-components"
 import {DeleteOutlined} from "@ant-design/icons";
-import {PageContext} from "../contexts/PageContext";
+import {usePage} from "../contexts/PageContext";
 
 export default function FormBar() {
   const {
@@ -11,7 +9,7 @@ export default function FormBar() {
     selectIndex,
     deleteFormItem,
     setSelectIndex
-  } = useContext(PageContext)
+  } = usePage()
 
   const formItemList = formItemConfig.map((formItem, index) => {
     const {tag, label, name} = formItem
