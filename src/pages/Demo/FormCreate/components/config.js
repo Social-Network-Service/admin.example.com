@@ -25,22 +25,22 @@ export const inputComponents = [
 export const selectComponents = [
   {
     __config__: {
-      label: '下拉选择',
-      tag: 'el-select',
-    }
-  },
-  {
-    __config__: {
       label: '单选框组',
-      tag: 'el-radio-group',
+      tag: 'radio-group',
     }
   },
   {
     __config__: {
       label: '多选框组',
-      tag: 'el-checkbox-group',
+      tag: 'checkbox-group',
     }
-  }
+  },
+  {
+    __config__: {
+      label: '下拉选择',
+      tag: 'select',
+    }
+  },
 ]
 
 // 布局型组件 【左面板】

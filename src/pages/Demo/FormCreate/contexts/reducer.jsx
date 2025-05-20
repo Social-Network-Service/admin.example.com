@@ -29,21 +29,33 @@ export const initialState = {
       "initialValue": ""
     },
     {
-      "tag": "el-select",
+      "tag": "select",
       "name": "field_3",
       "label": "3.下拉选择",
       "placeholder": "请选择",
-      "initialValue": null
+      "initialValue": null,
+      "options": [
+        {"label": "选项一", "value": "1"},
+        {"label": "选项二", "value": "2"}
+      ]
     },
     {
-      "tag": "el-radio-group",
+      "tag": "radio-group",
       "name": "field_4",
-      "label": "4.单选"
+      "label": "4.单选",
+      "options": [
+        {"label": "选项一", "value": "1"},
+        {"label": "选项二", "value": "2"}
+      ]
     },
     {
-      "tag": "el-checkbox-group",
+      "tag": "checkbox-group",
       "name": "field_5",
-      "label": "5.多选"
+      "label": "5.多选",
+      "options": [
+        {"label": "选项一", "value": "1"},
+        {"label": "选项二", "value": "2"}
+      ]
     }
   ],
   selectIndex: null,
@@ -85,11 +97,27 @@ export function formReducer(state, action) {
 
     case ActionTypes.ADD_FORM_ITEM: {
       const component = action.data;
+      const tag = component.__config__.tag;
       const newItem = {
-        tag: component.__config__.tag,
+        tag: tag,
         name: `field_${state.formItemConfig.length + 1}`,
         label: `字段${state.formItemConfig.length + 1}`,
       };
+      
+      // 为 select、radio-group 和 checkbox-group 组件添加默认的 options 属性
+      if (tag === 'select') {
+        newItem.placeholder = '请选择';
+        newItem.initialValue = null;
+        newItem.options = [
+          {label: '选项一', value: '1'},
+          {label: '选项二', value: '2'}
+        ];
+      } else if (tag === 'radio-group' || tag === 'checkbox-group') {
+        newItem.options = [
+          {label: '选项一', value: '1'},
+          {label: '选项二', value: '2'}
+        ];
+      }
 
       state.formItemConfig.push(newItem);
       break;

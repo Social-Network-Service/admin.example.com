@@ -19,7 +19,7 @@ export default function FormBar() {
   } = usePage()
 
   const formItemList = formItemConfig.map((formItem, index) => {
-    const {tag, label, name, placeholder, initialValue} = formItem
+    const {tag, label, name, placeholder, initialValue, options = []} = formItem
     let formItemComponent = null;
     switch (tag) {
       case 'input':
@@ -40,42 +40,30 @@ export default function FormBar() {
           initialValue={initialValue}
         />
         break;
-      case 'el-select':
+      case 'select':
         formItemComponent = <ProFormSelect
           key={index}
           label={label}
           name={name}
-          fieldProps={{
-            placeholder: placeholder,
-            allowClear: true,
-          }}
+          placeholder={placeholder}
           initialValue={initialValue}
-          options={[
-            {label: '选项一', value: '1'},
-            {label: '选项二', value: '2'},
-          ]}
+          options={options}
         />
         break;
-      case 'el-radio-group':
+      case 'radio-group':
         formItemComponent = <ProFormRadio.Group
           key={index}
           label={label}
           name={name}
-          options={[
-            {label: '选项一', value: '1'},
-            {label: '选项二', value: '2'},
-          ]}
+          options={options}
         />
         break;
-      case 'el-checkbox-group':
+      case 'checkbox-group':
         formItemComponent = <ProFormCheckbox.Group
           key={index}
           label={label}
           name={name}
-          options={[
-            {label: '选项一', value: '1'},
-            {label: '选项二', value: '2'},
-          ]}
+          options={options}
         />
         break;
       default:
