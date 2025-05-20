@@ -1,5 +1,4 @@
 import {ReactElement} from 'react'
-import './index.scss'
 
 type OnlyTitleSection = ReactElement<typeof TitleSection, typeof TitleSection>;
 
@@ -11,23 +10,25 @@ export function Module({children}: ModuleProps) {
   return <section>module:{children}</section>;
 }
 
-export function TitleSection() {
+export function TitleSection({children}: any) {
   return (
-    <section>TitleSection</section>
+    <section>{children}</section>
   );
 }
 
 export default () => {
   return (
-    <div className='mark-image-page'>
-      Mark Image
+    <div>
+      <Module>
+        <TitleSection>TitleSection</TitleSection>
+      </Module>
 
       <Module>
         <div>Should error</div>
       </Module>
 
       {/*<Module>
-        Should
+        error
       </Module>*/}
     </div>
   )

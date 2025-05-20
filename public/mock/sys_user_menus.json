@@ -185,6 +185,11 @@
       "icon": "TransactionOutlined",
       "routes": [
         {
+          "id": 503,
+          "name": "强制子元素类型",
+          "path": "/Test/ChildrenType"
+        },
+        {
           "id": 501,
           "name": "刷新页面",
           "path": "/Test/RefreshPage"

@@ -23,11 +23,8 @@ export const components = {
   '/user_center': wrapComponent(lazy(() => import('@/pages/user_center/index'))),
   '/404': wrapComponent(lazy(() => import('@/pages/404/index'))),
 
-  '/SACP/Mark/MarkVideo': wrapComponent(lazy(() => import('@/pages/SACP/Mark/MarkVideo/index'))),
-  '/SACP/Mark/MarkImage': wrapComponent(lazy(() => import('@/pages/SACP/Mark/MarkImage/index'))),
-  '/SACP/Mark/MarkInference': wrapComponent(lazy(() => import('@/pages/SACP/Mark/MarkInference/index'))),
-  '/SACP/Mark/QualityInspection': wrapComponent(lazy(() => import('@/pages/SACP/Mark/QualityInspection/index'))),
   '/SACP/Mark/MarkRecord': wrapComponent(lazy(() => import('@/pages/SACP/Mark/MarkRecord/index'))),
+  '/SACP/Mark/QualityInspection': wrapComponent(lazy(() => import('@/pages/SACP/Mark/QualityInspection/index'))),
 
   '/AntDesign/Flex': wrapComponent(lazy(() => import('@/pages/AntDesign/Layout/Flex/index'))),
   '/AntDesign/Grid': wrapComponent(lazy(() => import('@/pages/AntDesign/Layout/Grid/index'))),
@@ -52,6 +49,7 @@ export const components = {
   '/Demo/CRUD': wrapComponent(lazy(() => import('@/pages/Demo/CRUD/index'))),
   '/Demo/CRUD/Analytics': wrapComponent(lazy(() => import('@/pages/Demo/CRUD/Analytics/index'))),
 
+  '/Test/ChildrenType': wrapComponent(lazy(() => import('@/pages/Test/ChildrenType/index'))),
   '/Test/RefreshPage': wrapComponent(lazy(() => import('@/pages/Test/RefreshPage/index'))),
   '/Test/UpdateSearchParams': wrapComponent(lazy(() => import('@/pages/Test/UpdateSearchParams/index'))),
 
