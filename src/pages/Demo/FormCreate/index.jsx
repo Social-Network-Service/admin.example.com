@@ -1,5 +1,5 @@
 import Layout from './layout'
-import HeaderBar from './components/HeaderBar'
+import NavigationBar from './components/NavigationBar'
 import ComponentBar from './components/ComponentBar'
 import FormBar from './components/FormBar'
 import PropertyBar from './components/PropertyBar'
@@ -10,7 +10,7 @@ export default function FormCreate() {
   return (
     <PageProvider>
       <Layout
-        headerRender={() => (<HeaderBar/>)}
+        headerRender={() => (<NavigationBar/>)}
         leftRender={() => (<ComponentBar/>)}
         centerRender={() => (<FormBar/>)}
         rightRender={() => (<PropertyBar/>)}

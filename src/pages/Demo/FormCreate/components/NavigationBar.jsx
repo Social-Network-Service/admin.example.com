@@ -46,7 +46,7 @@ async function copyTextWithPermission(text) {
   }
 }
 
-export default function HeaderBar() {
+export default function NavigationBar() {
   const {formConfig, formItemConfig} = usePage()
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -103,12 +103,13 @@ export default function HeaderBar() {
         预览
       </Button>
 
-      <Modal title="JSON内容" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        <p id='editorJson' style={{whiteSpace: 'pre'}}>
-          {JSON.stringify(formItemConfig, null, 2)}
-        </p>
+      <Modal title="JSON内容" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} width={800}>
+        <div style={{maxHeight: "800px", overflow: 'hidden auto'}}>
+          <p id='editorJson' style={{whiteSpace: 'pre'}}>
+            {JSON.stringify(formItemConfig, null, 2)}
+          </p>
+        </div>
       </Modal>
-
     </div>
   )
 }

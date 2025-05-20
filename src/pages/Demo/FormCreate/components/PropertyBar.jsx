@@ -140,7 +140,7 @@ export default function PropertyBar() {
         label: selectedFormItem.label,
         name: selectedFormItem.name,
         placeholder: selectedFormItem.placeholder,
-        initialValue: selectedFormItem.initialValue,
+        defaultValue: selectedFormItem.defaultValue,
         options: selectedFormItem.options,
       });
     }
@@ -181,11 +181,11 @@ export default function PropertyBar() {
         </Form.Item>
       )}
 
-      <Form.Item label="默认值" name="initialValue">
+      <Form.Item label="默认值" name="defaultValue">
         <Input
           placeholder="请输入默认值"
           onChange={(event) => {
-            setComponentProperty('initialValue', event.target.value)
+            setComponentProperty('defaultValue', event.target.value)
           }}
         />
       </Form.Item>

@@ -19,21 +19,21 @@ export const initialState = {
       "name": "field_1",
       "label": "1.单行文本输入",
       "placeholder": "请输入",
-      "initialValue": ""
+      "defaultValue": "西山居"
     },
     {
       "tag": "textarea",
       "name": "field_2",
       "label": "2.多行文本输入",
       "placeholder": "请输入",
-      "initialValue": ""
+      "defaultValue": ""
     },
     {
       "tag": "select",
       "name": "field_3",
       "label": "3.下拉选择",
       "placeholder": "请选择",
-      "initialValue": null,
+      "defaultValue": ["2"],
       "options": [
         {"label": "选项一", "value": "1"},
         {"label": "选项二", "value": "2"}
@@ -43,6 +43,7 @@ export const initialState = {
       "tag": "radio-group",
       "name": "field_4",
       "label": "4.单选",
+      "defaultValue": "2",
       "options": [
         {"label": "选项一", "value": "1"},
         {"label": "选项二", "value": "2"}
@@ -103,11 +104,11 @@ export function formReducer(state, action) {
         name: `field_${state.formItemConfig.length + 1}`,
         label: `字段${state.formItemConfig.length + 1}`,
       };
-      
+
       // 为 select、radio-group 和 checkbox-group 组件添加默认的 options 属性
       if (tag === 'select') {
         newItem.placeholder = '请选择';
-        newItem.initialValue = null;
+        newItem.defaultValue = null;
         newItem.options = [
           {label: '选项一', value: '1'},
           {label: '选项二', value: '2'}

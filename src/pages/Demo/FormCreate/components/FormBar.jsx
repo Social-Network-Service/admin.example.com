@@ -19,7 +19,7 @@ export default function FormBar() {
   } = usePage()
 
   const formItemList = formItemConfig.map((formItem, index) => {
-    const {tag, label, name, placeholder, initialValue, options = []} = formItem
+    const {tag, label, name, placeholder, defaultValue, options = []} = formItem
     let formItemComponent = null;
     switch (tag) {
       case 'input':
@@ -28,7 +28,7 @@ export default function FormBar() {
           label={label}
           name={name}
           placeholder={placeholder}
-          initialValue={initialValue}
+          initialValue={defaultValue}
         />
         break;
       case 'textarea':
@@ -37,7 +37,7 @@ export default function FormBar() {
           label={label}
           name={name}
           placeholder={placeholder}
-          initialValue={initialValue}
+          initialValue={defaultValue}
         />
         break;
       case 'select':
@@ -46,7 +46,7 @@ export default function FormBar() {
           label={label}
           name={name}
           placeholder={placeholder}
-          initialValue={initialValue}
+          initialValue={defaultValue}
           options={options}
         />
         break;
@@ -55,6 +55,7 @@ export default function FormBar() {
           key={index}
           label={label}
           name={name}
+          initialValue={defaultValue}
           options={options}
         />
         break;
@@ -63,6 +64,7 @@ export default function FormBar() {
           key={index}
           label={label}
           name={name}
+          initialValue={defaultValue}
           options={options}
         />
         break;
