@@ -1,4 +1,11 @@
-import {ProForm, ProFormText, ProFormTextArea, ProFormSelect, ProFormRadio, ProFormCheckbox} from "@ant-design/pro-components"
+import {
+  ProForm,
+  ProFormText,
+  ProFormTextArea,
+  ProFormSelect,
+  ProFormRadio,
+  ProFormCheckbox
+} from "@ant-design/pro-components"
 import {DeleteOutlined} from "@ant-design/icons";
 import {usePage} from "../contexts/PageContext";
 
@@ -12,7 +19,7 @@ export default function FormBar() {
   } = usePage()
 
   const formItemList = formItemConfig.map((formItem, index) => {
-    const {tag, label, name} = formItem
+    const {tag, label, name, placeholder, initialValue} = formItem
     let formItemComponent = null;
     switch (tag) {
       case 'input':
@@ -20,6 +27,8 @@ export default function FormBar() {
           key={index}
           label={label}
           name={name}
+          placeholder={placeholder}
+          initialValue={initialValue}
         />
         break;
       case 'textarea':
@@ -27,13 +36,8 @@ export default function FormBar() {
           key={index}
           label={label}
           name={name}
-        />
-        break;
-      case 'input_password':
-        formItemComponent = <ProFormText.Password
-          key={index}
-          label={label}
-          name={name}
+          placeholder={placeholder}
+          initialValue={initialValue}
         />
         break;
       case 'el-select':
@@ -41,9 +45,14 @@ export default function FormBar() {
           key={index}
           label={label}
           name={name}
+          fieldProps={{
+            placeholder: placeholder,
+            allowClear: true,
+          }}
+          initialValue={initialValue}
           options={[
-            { label: '选项一', value: '1' },
-            { label: '选项二', value: '2' },
+            {label: '选项一', value: '1'},
+            {label: '选项二', value: '2'},
           ]}
         />
         break;
@@ -53,8 +62,8 @@ export default function FormBar() {
           label={label}
           name={name}
           options={[
-            { label: '选项一', value: '1' },
-            { label: '选项二', value: '2' },
+            {label: '选项一', value: '1'},
+            {label: '选项二', value: '2'},
           ]}
         />
         break;
@@ -64,8 +73,8 @@ export default function FormBar() {
           label={label}
           name={name}
           options={[
-            { label: '选项一', value: '1' },
-            { label: '选项二', value: '2' },
+            {label: '选项一', value: '1'},
+            {label: '选项二', value: '2'},
           ]}
         />
         break;

@@ -17,17 +17,23 @@ export const initialState = {
     {
       "tag": "input",
       "name": "field_1",
-      "label": "1.单行文本输入"
+      "label": "1.单行文本输入",
+      "placeholder": "请输入",
+      "initialValue": ""
     },
     {
       "tag": "textarea",
       "name": "field_2",
-      "label": "2.多行文本输入"
+      "label": "2.多行文本输入",
+      "placeholder": "请输入",
+      "initialValue": ""
     },
     {
       "tag": "el-select",
       "name": "field_3",
-      "label": "3.下拉选择"
+      "label": "3.下拉选择",
+      "placeholder": "请选择",
+      "initialValue": null
     },
     {
       "tag": "el-radio-group",

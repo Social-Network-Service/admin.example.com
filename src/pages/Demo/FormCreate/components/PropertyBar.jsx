@@ -21,6 +21,8 @@ export default function PropertyBar() {
             form.setFieldsValue({
                 label: selectedFormItem.label,
                 name: selectedFormItem.name,
+                placeholder: selectedFormItem.placeholder,
+                initialValue: selectedFormItem.initialValue,
             });
         }
     }, [selectedFormItem, form]);
@@ -49,6 +51,24 @@ export default function PropertyBar() {
                     }}
                 />
             </Form.Item>
+            {(selectedFormItem.tag === 'input' || selectedFormItem.tag === 'textarea' || selectedFormItem.tag === 'el-select') && (
+                <>
+                    <Form.Item label="提示文本" name="placeholder">
+                        <Input placeholder="请输入占位提示文字"
+                            onChange={(event) => {
+                                setComponentProperty('placeholder', event.target.value)
+                            }}
+                        />
+                    </Form.Item>
+                    <Form.Item label="默认值" name="initialValue">
+                        <Input placeholder="请输入默认值"
+                            onChange={(event) => {
+                                setComponentProperty('initialValue', event.target.value)
+                            }}
+                        />
+                    </Form.Item>
+                </>
+            )}
         </Form>)
         : <span style={{ color: 'rgba(150,150,150,0.5)' }}>请选择表单项</span>
 
