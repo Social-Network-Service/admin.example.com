@@ -1,7 +1,6 @@
 import {useLocation, useNavigate, useRoutes} from 'react-router-dom';
-import {constantRoutesList} from "./routes";
-import {asyncGenerateRoutes} from "./dynamicRouter";
-import {useGlobal} from "../contexts/GlobalContext";
+import {asyncGenerateRoutes, constantRoutesList} from "./routes";
+import {useGlobal} from "@/contexts/GlobalContext";
 import {useEffect, useState} from "react";
 import {isAuthenticated} from "@/utils";
 import {System} from "services/modules/System";

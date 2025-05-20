@@ -21,7 +21,7 @@ const Login = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const redirectPath = urlParams.get('redirect');
     // 跳转到指定页面或首页
-    navigate(redirectPath || '/')
+    navigate(redirectPath || '/', {replace: true});
   }
   const loginFailed = () => {
     setLoading(false)
