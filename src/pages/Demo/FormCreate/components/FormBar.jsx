@@ -1,4 +1,4 @@
-import {ProForm, ProFormText, ProFormTextArea} from "@ant-design/pro-components"
+import {ProForm, ProFormText, ProFormTextArea, ProFormSelect, ProFormRadio, ProFormCheckbox} from "@ant-design/pro-components"
 import {DeleteOutlined} from "@ant-design/icons";
 import {usePage} from "../contexts/PageContext";
 
@@ -34,6 +34,39 @@ export default function FormBar() {
           key={index}
           label={label}
           name={name}
+        />
+        break;
+      case 'el-select':
+        formItemComponent = <ProFormSelect
+          key={index}
+          label={label}
+          name={name}
+          options={[
+            { label: '选项一', value: '1' },
+            { label: '选项二', value: '2' },
+          ]}
+        />
+        break;
+      case 'el-radio-group':
+        formItemComponent = <ProFormRadio.Group
+          key={index}
+          label={label}
+          name={name}
+          options={[
+            { label: '选项一', value: '1' },
+            { label: '选项二', value: '2' },
+          ]}
+        />
+        break;
+      case 'el-checkbox-group':
+        formItemComponent = <ProFormCheckbox.Group
+          key={index}
+          label={label}
+          name={name}
+          options={[
+            { label: '选项一', value: '1' },
+            { label: '选项二', value: '2' },
+          ]}
         />
         break;
       default:

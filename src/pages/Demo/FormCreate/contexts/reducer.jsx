@@ -15,20 +15,30 @@ export const initialState = {
   },
   formItemConfig: [
     {
-      tag: 'input',
-      name: 'field_1',
-      label: '字段1',
+      "tag": "input",
+      "name": "field_1",
+      "label": "1.单行文本输入"
     },
     {
-      tag: 'textarea',
-      name: 'field_2',
-      label: '字段2',
+      "tag": "textarea",
+      "name": "field_2",
+      "label": "2.多行文本输入"
     },
     {
-      tag: 'input_password',
-      name: 'field_3',
-      label: '字段3',
+      "tag": "el-select",
+      "name": "field_3",
+      "label": "3.下拉选择"
     },
+    {
+      "tag": "el-radio-group",
+      "name": "field_4",
+      "label": "4.单选"
+    },
+    {
+      "tag": "el-checkbox-group",
+      "name": "field_5",
+      "label": "5.多选"
+    }
   ],
   selectIndex: null,
 };
