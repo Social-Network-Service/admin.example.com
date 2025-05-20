@@ -1,4 +1,5 @@
-import React, {useReducer, useContext, useCallback} from "react";
+import React, {useContext, useCallback} from "react";
+import {useImmerReducer} from "use-immer";
 import {
   formReducer,
   initialState,
@@ -16,8 +17,8 @@ export function usePage() {
 }
 
 export function PageProvider({children}) {
-  // 使用useReducer替代多个useState
-  const [state, dispatch] = useReducer(formReducer, initialState);
+  // 使用useImmerReducer替代useReducer
+  const [state, dispatch] = useImmerReducer(formReducer, initialState);
   
   // 使用useCallback包装dispatch函数，确保引用稳定性
   const setFormConfig = useCallback((data) => {

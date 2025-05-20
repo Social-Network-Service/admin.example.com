@@ -59,17 +59,13 @@ export const createSetComponentPropertyAction = (name, value) => ({
   payload: { name, value }
 });
 
-// Reducer函数
+// Reducer函数 - 使用Immer的可变更新风格
 export function formReducer(state, action) {
   switch (action.type) {
     case ActionTypes.SET_FORM_CONFIG:
-      return {
-        ...state,
-        formConfig: {
-          ...state.formConfig,
-          ...action.payload
-        }
-      };
+      // 直接修改draft
+      Object.assign(state.formConfig, action.payload);
+      break;
 
     case ActionTypes.ADD_FORM_ITEM: {
       const component = action.payload;
@@ -79,37 +75,30 @@ export function formReducer(state, action) {
         label: `字段${state.formItemConfig.length + 1}`,
       };
       
-      return {
-        ...state,
-        formItemConfig: [...state.formItemConfig, newItem]
-      };
+      // 直接push到数组中
+      state.formItemConfig.push(newItem);
+      break;
     }
 
     case ActionTypes.DELETE_FORM_ITEM: {
       const index = action.payload;
-      const newFormItemConfig = [...state.formItemConfig];
-      newFormItemConfig.splice(index, 1);
+      
+      // 直接修改数组
+      state.formItemConfig.splice(index, 1);
       
       // 更新选中索引
-      let newSelectIndex = state.selectIndex;
       if (state.selectIndex === index) {
-        newSelectIndex = null;
+        state.selectIndex = null;
       } else if (state.selectIndex > index) {
-        newSelectIndex = state.selectIndex - 1;
+        state.selectIndex -= 1;
       }
-      
-      return {
-        ...state,
-        formItemConfig: newFormItemConfig,
-        selectIndex: newSelectIndex
-      };
+      break;
     }
 
     case ActionTypes.SET_SELECT_INDEX:
-      return {
-        ...state,
-        selectIndex: action.payload
-      };
+      // 直接设置值
+      state.selectIndex = action.payload;
+      break;
 
     case ActionTypes.SET_COMPONENT_PROPERTY: {
       const { name, value } = action.payload;
@@ -117,23 +106,16 @@ export function formReducer(state, action) {
       
       // 确保有选中的索引
       if (selectIndex === null || selectIndex < 0 || selectIndex >= state.formItemConfig.length) {
-        return state;
+        return; // 不做任何更改
       }
       
-      // 创建新数组和新对象
-      const newFormItemConfig = [...state.formItemConfig];
-      newFormItemConfig[selectIndex] = {
-        ...newFormItemConfig[selectIndex],
-        [name]: value
-      };
-      
-      return {
-        ...state,
-        formItemConfig: newFormItemConfig
-      };
+      // 直接修改对象属性
+      state.formItemConfig[selectIndex][name] = value;
+      break;
     }
 
     default:
-      return state;
+      // 在Immer中，如果不做任何更改，可以什么都不返回
+      break;
   }
 }
