@@ -10,7 +10,7 @@ const { Step } = Steps;
  * 用于创建和配置工作流程
  */
 export default function WorkflowCreate() {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(1);
   const [workflowData, setWorkflowData] = useState({
     basicInfo: {},
     nodeConfig: [],
