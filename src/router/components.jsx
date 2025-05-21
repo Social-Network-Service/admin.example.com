@@ -46,6 +46,7 @@ export const components = {
   '/AntDesignPro/PageContainer': wrapComponent(lazy(() => import('@/pages/AntDesignPro/PageContainer/index'))),
 
   '/Demo/FormCreate': wrapComponent(lazy(() => import('@/pages/Demo/FormCreate/index'))),
+  '/Demo/WorkflowCreate': wrapComponent(lazy(() => import('@/pages/Demo/WorkflowCreate/index'))),
   '/Demo/CRUD': wrapComponent(lazy(() => import('@/pages/Demo/CRUD/index'))),
   '/Demo/CRUD/Analytics': wrapComponent(lazy(() => import('@/pages/Demo/CRUD/Analytics/index'))),
 

@@ -175,6 +175,10 @@
         {
           "name": "表单创建",
           "path": "/Demo/FormCreate"
+        },
+        {
+          "name": "流程创建",
+          "path": "/Demo/WorkflowCreate"
         }
       ]
     },
