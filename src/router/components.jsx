@@ -42,8 +42,7 @@ export const components = {
   '/AntDesign/Tabs': wrapComponent(lazy(() => import('@/pages/AntDesign/DataDisplay/Tabs/index'))),
   '/AntDesign/Modal': wrapComponent(lazy(() => import('@/pages/AntDesign/Modal/index'))),
   '/AntDesign/Popover': wrapComponent(lazy(() => import('@/pages/AntDesign/Popover/index'))),
-
-  '/AntDesignPro/PageContainer': wrapComponent(lazy(() => import('@/pages/AntDesignPro/PageContainer/index'))),
+  '/AntDesign/AntDesignPro/PageContainer': wrapComponent(lazy(() => import('@/pages/AntDesign/AntDesignPro/PageContainer/index'))),
 
   '/Demo/FormCreate': wrapComponent(lazy(() => import('@/pages/Demo/FormCreate/index'))),
   '/Demo/WorkflowCreate': wrapComponent(lazy(() => import('@/pages/Demo/WorkflowCreate/index'))),

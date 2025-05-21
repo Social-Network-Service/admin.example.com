@@ -61,6 +61,16 @@
       "icon": "SmileOutlined",
       "routes": [
         {
+          "name": "AntDesignPro",
+          "path": "/AntDesign/AntDesignPro",
+          "routes": [
+            {
+              "name": "页面容器(PageContainer)",
+              "path": "/AntDesign/AntDesignPro/PageContainer"
+            }
+          ]
+        },
+        {
           "name": "布局",
           "path": "/AntDesign/Layout",
           "routes": [
@@ -141,18 +151,6 @@
         {
           "name": "图标(Icons)",
           "path": "/AntDesign/Icons"
-        }
-      ]
-    },
-    {
-      "id": 350,
-      "name": "AntDesignPro",
-      "path": "/AntDesignPro",
-      "icon": "OpenAIOutlined",
-      "routes": [
-        {
-          "name": "页面容器(PageContainer)",
-          "path": "/AntDesignPro/PageContainer"
         }
       ]
     },
